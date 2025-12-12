@@ -123,7 +123,7 @@ describe('Given: parseLogger API', () => {
       const obj1 = { id: 1 };
       const obj2 = { name: 'test' };
       const arr = [1, 2, 3];
-      const func = (): void => {};
+      const func = () => {};
       const messages = [
         'Start',
         obj1,

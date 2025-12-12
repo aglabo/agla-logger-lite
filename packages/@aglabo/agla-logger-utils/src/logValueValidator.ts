@@ -57,16 +57,23 @@ export const _isStringifiableType = (arg: unknown): arg is string | number | boo
 /**
  * Internal: 文字列化可能値判定（値チェック版）
  *
- * 未知の値が文字列化可能な特殊値（null、undefined）かどうかを判定します。
+ * 未知の値が文字列化可能な特殊値（null、undefined、NaN、Infinity）かどうかを判定します。
  * 値チェックのみを行い、型チェックは別の関数で行います。
  *
  * @internal
  * @param arg - 判定対象の値
  * @returns 文字列化可能な特殊値の場合true、それ以外はfalse
  */
-export const _isStringifiableValue = (arg: unknown): arg is null | undefined => {
-  // Check for null and undefined only
-  return arg === null || arg === undefined;
+export const _isStringifiableValue = (arg: unknown): boolean => {
+  // Check for null and undefined
+  if (arg === null || arg === undefined) {
+    return true;
+  }
+  // Check for NaN and Infinity
+  if (typeof arg === 'number') {
+    return Number.isNaN(arg) || !Number.isFinite(arg);
+  }
+  return false;
 };
 
 /**

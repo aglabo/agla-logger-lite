@@ -303,7 +303,7 @@ describe('Given: logValueComposer module', () => {
 
       it('Given object with function value, When formatting, Then formats function correctly', (): void => {
         // Arrange
-        const input = { callback: function namedFunc(): void { } };
+        const input = { callback: function namedFunc(): void {} };
 
         // Act
         const result = _formatObject(input, new WeakSet());
@@ -486,7 +486,8 @@ describe('Given: logValueComposer module', () => {
 
       it('Given function, When converting, Then returns formatted function', () => {
         // Arrange
-        const input = function namedFunc(): void { };
+        const input = function namedFunc(): void {};
+        // The output format is "[Function: namedFunc]"
 
         // Act
         const result = _valueToString(input, new WeakSet());

@@ -14,13 +14,18 @@ import { describe, expect, it } from 'vitest';
 // Temporary test implementation placeholder
 const _escapeString = (str: string): string => {
   const escaped = str
-    .replace(/\\/g, '\\\\')   // Backslash (must be first)
-    .replace(/"/g, '\\"')     // Double quote
-    .replace(/\n/g, '\\n')    // Newline
-    .replace(/\r/g, '\\r')    // Carriage return
-    .replace(/\t/g, '\\t');   // Tab
+    .replace(/\\/g, '\\\\') // Backslash (must be first)
+    .replace(/"/g, '\\"') // Double quote
+    .replace(/\n/g, '\\n') // Newline
+    .replace(/\r/g, '\\r') // Carriage return
+    .replace(/\t/g, '\\t'); // Tab
 
   return `"${escaped}"`;
+};
+
+const _formatFunction = (func: Function): string => {
+  const name = func.name;
+  return name ? `function: ${name}` : 'function:';
 };
 
 // Feature レベル (Given)
@@ -126,6 +131,99 @@ describe('Given: objectToString module', () => {
 
         // Act
         const result = _escapeString(input);
+
+        // Assert
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
+  // Scenario レベル (When) - Helper: _formatFunction
+  describe('When: _formatFunction helper is called', () => {
+    // Case レベル (Then) - [正常] Named function formatting
+    describe('Then: [正常] Named function formatting', () => {
+      it('Given named function, When formatting, Then returns function: name', () => {
+        // Arrange
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        function myFunc() {}
+        const expected = 'function: myFunc';
+
+        // Act
+        const result = _formatFunction(myFunc);
+
+        // Assert
+        expect(result).toBe(expected);
+      });
+
+      it('Given function expression with name, When formatting, Then returns function: name', () => {
+        // Arrange
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        const namedFunc = function myNamedFunc() {};
+        const expected = 'function: myNamedFunc';
+
+        // Act
+        const result = _formatFunction(namedFunc);
+
+        // Assert
+        expect(result).toBe(expected);
+      });
+
+      it('Given method in object, When formatting, Then returns function: methodName', () => {
+        // Arrange
+        const obj = {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          myMethod() {},
+        };
+        const expected = 'function: myMethod';
+
+        // Act
+        const result = _formatFunction(obj.myMethod);
+
+        // Assert
+        expect(result).toBe(expected);
+      });
+    });
+
+    // Case レベル (Then) - [異常] Anonymous function with variable name
+    describe('Then: [異常] Anonymous function with variable name', () => {
+      it('Given anonymous arrow function, When formatting, Then returns function: varName', () => {
+        // Arrange
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        const arrowFunc = () => {};
+        const expected = 'function: arrowFunc';
+
+        // Act
+        const result = _formatFunction(arrowFunc);
+
+        // Assert
+        expect(result).toBe(expected);
+      });
+
+      it('Given anonymous function expression, When formatting, Then returns function: varName', () => {
+        // Arrange
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        const anon = function() {};
+        const expected = 'function: anon';
+
+        // Act
+        const result = _formatFunction(anon);
+
+        // Assert
+        expect(result).toBe(expected);
+      });
+    });
+
+    // Case レベル (Then) - [エッジケース] Edge cases
+    describe('Then: [エッジケース] Edge cases', () => {
+      it('Given function with empty string name, When formatting, Then returns function:', () => {
+        // Arrange
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        const func = function() {};
+        Object.defineProperty(func, 'name', { value: '' });
+        const expected = 'function:';
+
+        // Act
+        const result = _formatFunction(func);
 
         // Assert
         expect(result).toBe(expected);

@@ -7,22 +7,10 @@
 // https://opensource.org/licenses/MIT
 
 import { describe, expect, it } from 'vitest';
+import { _escapeString } from '../../objectToString.ts';
 
-// Temporary: Import path will be updated once implementation file is created
-// import { objectToString } from '../../objectToString.ts';
-
-// Temporary test implementation placeholder
-const _escapeString = (str: string): string => {
-  const escaped = str
-    .replace(/\\/g, '\\\\') // Backslash (must be first)
-    .replace(/"/g, '\\"') // Double quote
-    .replace(/\n/g, '\\n') // Newline
-    .replace(/\r/g, '\\r') // Carriage return
-    .replace(/\t/g, '\\t'); // Tab
-
-  return `"${escaped}"`;
-};
-
+// Temporary test implementation placeholder for _formatFunction
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const _formatFunction = (func: Function): string => {
   const name = func.name;
   return name ? `function: ${name}` : 'function:';

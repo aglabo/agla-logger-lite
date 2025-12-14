@@ -22,17 +22,17 @@
     // "outDir": "./maps",
     "rootDir": "./",
     // aliases
-    "baseUrl": "./",
+    // "baseUrl": "./",
     "paths": {
       "#/*": [
-        "src/*",
+        "./src/*",
         "/*"
       ],
       "#shared/*": [
-        "shared/*"
+        "./shared/*"
       ],
       "#tests/*": [
-        "tests/*"
+        "./tests/*"
       ]
     },
     // types

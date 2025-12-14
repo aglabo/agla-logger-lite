@@ -4,5 +4,6 @@ esm
 jscoverage
 npmjs
 sdd
+Stringifiable
 tsup
 vite

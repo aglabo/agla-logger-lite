@@ -49,7 +49,6 @@
     "newLine": "LF",
     "composite": false,
     // ✅ 増分ビルド
-    // incremental build
     "incremental": true,
     // ✅ ライブラリ
     "lib": [

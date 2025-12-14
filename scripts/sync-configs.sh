@@ -39,10 +39,18 @@ sync_files() {
   for file in $file_pattern; do
     if [[ -f "$file" ]]; then
       local basename="$(basename "$file")"
+      local target_file="$target_dir/$basename"
+
+      # Skip if file already exists
+      if [[ -f "$target_file" ]]; then
+        echo "  ⊘ Skipped (already exists): $basename"
+        continue
+      fi
+
       if $FLAG_DRY_RUN; then
         echo "  [DRY-RUN] Would copy: $basename"
       else
-        cp "$file" "$target_dir/$basename"
+        cp "$file" "$target_file"
         echo "  ✓ Copied: $basename"
       fi
     fi

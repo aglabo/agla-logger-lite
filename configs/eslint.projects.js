@@ -8,6 +8,6 @@
 
 export default [
   // for This Product
-  './packages/@aglabo/agla-logger-lite/tsconfig.json',
+  './packages/@aglabo/agla-logger-utils/tsconfig.json',
   // root project
 ];

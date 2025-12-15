@@ -31,9 +31,13 @@
 export type AGTLogMessage = {
   /**
    * Log level label string (immutable).
-   * Typically one of: OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL
+   * Must be uppercase letters only. Typically one of: OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL
+   *
+   * Note: Future extensions may introduce additional custom labels, but all labels must follow
+   * the uppercase-only convention.
    *
    * @example "INFO"
+   * @constraint Must contain only uppercase letters (A-Z). Invalid: "info", "Info", "DEBUG123"
    */
   readonly logLabel: string;
 

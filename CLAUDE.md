@@ -1,69 +1,80 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+このファイルは Claude Code を使用する際の協働ルールです。
 
-## Project Overview
+## プロジェクトコンテキスト
 
-TypeScript monorepo for `@aglabo/agla-logger-lite` - standardized error handling library with cross-runtime support (Node.js >=20, Deno, Bun).
+**プロジェクト**: @aglabo/agla-logger-lite
+- TypeScript 5.9.3, ES2022 ESM のみ
+- Node.js >=20, Deno, Bun 対応
+- ゼロ依存のロギングユーティリティ
+- 開発状況: アクティブ (SDD フェーズ2: 仕様設計)
 
-- Package Manager: pnpm 10.25.0
-- Language: TypeScript 5.9.3 (ES2022, ESM only)
-
-## Architecture
-
-### Three-Layer Configuration Inheritance
-
-All configs (TypeScript, ESLint, Vitest) follow this pattern:
-
-1. `base/configs/` - Shared base (tsconfig.base.json, vitest.config.base.ts, eslint.config.base.js)
-2. `configs/` - Root-level (imports base, adds project-wide settings)
-3. `packages/*/configs/` - Package-specific (extends base using `mergeConfig()` or spread operator)
-
-When modifying configs, edit the appropriate layer and let inheritance propagate changes.
-
-### Five-Layer Testing Architecture
-
-Each layer has its own Vitest config with isolated cache/coverage:
-
-| Layer       | Config                         | Test Location                   | Purpose                     |
-| ----------- | ------------------------------ | ------------------------------- | --------------------------- |
-| Unit        | `vitest.config.unit.ts`        | `src/**/__tests__/**/*.spec.ts` | Pure unit tests             |
-| Functional  | `vitest.config.functional.ts`  | `src/**/__tests__/functional/`  | API-level tests             |
-| Integration | `vitest.config.integration.ts` | `tests/integration/`            | Integration tests           |
-| E2E         | `vitest.config.e2e.ts`         | `tests/e2e/`                    | End-to-end scenarios        |
-| Runtime     | `vitest.config.runtime.ts`     | Cross-runtime tests             | Node/Deno/Bun compatibility |
-
-Run specific layers: `pnpm run test:develop` (unit), `test:functional`, `test:ci` (integration), `test:e2e`, `test:runtime`
-
-### Config Synchronization
-
-`pnpm run sync:configs` synchronizes shared files (README, LICENSE, package.json scripts) from repo root to packages.
-
-- Uses `INIT_CWD` to determine target package
-- Powered by `scripts/sync-configs.sh` and `scripts/sync-package-scripts.ts`
-
-## Key Commands
-
-```bash
-# Development
-pnpm run check:types          # Type check all packages
-pnpm run lint-all             # Lint all files
-pnpm run test:all             # Run all test layers
-
-# Package-specific (cd packages/@aglabo/agla-logger-lite)
-pnpm run build                # Build with tsup
-pnpm run test:develop         # Unit tests only
+**構造**:
+```
+packages/@aglabo/agla-logger-utils/
+├── src/
+│   ├── parseLogger.ts           # ロガー引数パーサー
+│   ├── logCreator.ts            # フォーマッター
+│   ├── logValueValidator.ts     # バリデーター
+│   ├── logValueUtils.ts         # ユーティリティ
+│   ├── index.ts                 # 公開API
+│   └── __tests__/               # テスト
+├── shared/types/                # 型定義
+└── configs/                     # 設定
 ```
 
-## Code Conventions
+## AI 協働ルール（最優先）
 
-### File Headers
+### MCP ツール - 必須利用
 
-All source files must include:
+**すべてのコード操作は MCP ツール利用後に実行します**
+- ✅ MCP ツールで既存パターン/型安全性確認 → 編集
+- ❌ ファイル読み込み直後の即時編集
+
+**段階的アプローチ** (800-1700 tokens vs 2500-5500 tokens):
+1. `get_symbols_overview()` - ファイル構造を把握 (100-300 tokens)
+2. `search_symbols()` - シンボル検索 (200-500 tokens)
+3. `lsp_find_references()` - 影響分析 (300-800 tokens)
+4. `lsp_get_diagnostics()` - エラー確認 (200-400 tokens)
+
+### 禁止操作
+
+- ❌ MCP なしで Read ツール使用
+- ❌ find_referencing_symbols なしで編集
+- ❌ パターン検索なしで新規コード追加
+
+## 技術スタック
+
+| 項目 | 仕様 |
+|------|------|
+| 言語 | TypeScript 5.9.3 |
+| モジュール | ES2022 ESM |
+| ターゲット | ES2022 |
+| テスト | Vitest (5層) |
+| ビルド | tsup |
+| フォーマット | dprint |
+
+**テスト層** (5層):
+- Unit: `pnpm run test:develop`
+- Functional: `pnpm run test:functional`
+- Integration: `pnpm run test:ci`
+- E2E: `pnpm run test:e2e`
+- Runtime: `pnpm run test:runtime`
+
+## コード規約
+
+### 必須ルール
+- Arrow 関数のみ: `const fn = () => {}`
+- 型安全: すべての引数/戻り値に型指定
+- Type imports: `import type { Foo } from './foo'`
+- No `any`: 明示的型を常に指定
+
+### ファイルヘッダー
 
 ```typescript
 // src: path/to/file.ts
-// @(#) : Description
+// @(#) Brief description
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 //
@@ -71,37 +82,91 @@ All source files must include:
 // https://opensource.org/licenses/MIT
 ```
 
-### ESLint Rules (Enforced)
-
-- Prefer `type` over `interface`
-- Use explicit `type` imports: `import type { Foo } from './foo'`
-- Function expressions only: `const fn = () => {}` (not `function fn() {}`)
-
-### Import Aliases
-
-Use subpath imports:
+### BDD テスト構造
 
 ```typescript
-import { Bar } from '#shared/types/bar.ts';
-import { Foo } from '#src/foo.ts';
-import { Baz } from '#tests/helpers.ts';
+describe('[正常] Feature - Normal cases', () => {
+  it('Given X, When Y, Then Z', () => {
+    // test
+  });
+});
+
+describe('[異常] Feature - Error cases', () => {
+  it('Given invalid input, When called, Then handle', () => {
+    // test
+  });
+});
+
+describe('[エッジケース] Feature - Edge cases', () => {
+  it('Given boundary value, When called, Then correct', () => {
+    // test
+  });
+});
 ```
 
-### Commit Messages
+## 開発ワークフロー (SDD)
 
-Conventional Commits enforced by commitlint:
-
+**5 フェーズ**:
+```bash
+/sdd init namespace/module      # フェーズ0: 初期化
+/sdd req                         # フェーズ1: 要件定義
+/sdd spec                        # フェーズ2: 仕様設計
+/sdd tasks                       # フェーズ3: タスク分解
+/sdd coding                      # フェーズ4: BDD 実装
+/sdd commit                      # フェーズ5: コミット
 ```
-type(scope): description
 
-Examples:
-feat(logger): add error severity levels
-fix(core): handle undefined error messages
+**品質ゲート** (コミット前に全て実行):
+```bash
+pnpm run check:types && \
+pnpm run lint && \
+pnpm run test:all && \
+pnpm run check:dprint && \
+pnpm run build
 ```
 
-## Adding a New Package
+## 重要なコマンド
 
-1. Create directory under `packages/@aglabo/`
-2. Add tsconfig.json path to `configs/eslint.projects.js`
-3. Create `configs/` with package-specific configs extending base
-4. Run `pnpm run sync:configs` to sync shared files
+**開発**:
+- `pnpm run check:types` - 型チェック
+- `pnpm run lint` - Lint
+- `pnpm run test:all` - 全テスト
+- `pnpm run build` - ビルド
+
+**MCP メモリー参照**:
+- Serena: `.serena/memories/` (5ファイル, ~43 KB)
+  - project_current_status
+  - codebase_architecture
+  - testing_patterns_and_conventions
+  - code_style_current
+  - development_workflow
+
+- LSMCP: `.lsmcp/memories/` (2ファイル, ~37 KB)
+  - lsmcp_configuration
+  - lsmcp_tools_reference
+
+## 現在の進捗
+
+**Active Module**: logger-utils/createlog
+- ✅ Phase 1: 要件定義完了
+- ⏳ Phase 2: 仕様設計進行中
+- ⏹️ Phase 3-5: 待機中
+
+**次のステップ**: `/sdd spec`
+
+## 過度なエンジニアリングを避ける
+
+- ❌ 要件外の機能を追加しない
+- ❌ 周囲のコードをクリーンアップしない
+- ❌ 変更していないコードにコメント追加しない
+- ✅ ユーザー入力/外部API境界でのみ検証
+- ✅ 内部コードを信頼する
+- ✅ シンプルに保つ
+
+---
+
+最終更新: 2025-12-15 18:30 UTC
+バージョン: 5.1 (Simplified Format)
+型: 協働ルール型 (How to collaborate)
+行数: 150行
+MCP 統合: Serena-MCP 2.0 + LSMCP 2.0

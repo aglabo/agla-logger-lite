@@ -9,9 +9,14 @@
   "type": "module",
   "types": "./module/index.d.ts",
   "imports": {
+    "#": "./src",
+    "#/*": "./src/*",
     "#src": "./src",
+    "#src/*": "./src/*",
     "#shared": "./shared",
-    "#tests": "./tests"
+    "#shared/*": "./shared/*",
+    "#tests": "./tests",
+    "#tests/*": "./tests/*"
   },
   "exports": {
     ".": {

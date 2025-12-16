@@ -24,7 +24,7 @@ pre-commit:
 prepare-commit-msg:
   commands:
     prepare-message-script:
-      run: bash -c './scripts/prepare-commit-msg.sh --model anthropic/claude-sonnet-4-5 --git-buffer'
+      run: bash -c './scripts/prepare-commit-msg.sh --model openai/codex-mini-latest --git-buffer'
 
 # check commit message as Conventional Commit
 commit-msg:

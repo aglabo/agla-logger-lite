@@ -191,7 +191,7 @@ make_context_block() {
 # @exitcode 0 If model is supported
 # @exitcode 1 If model is unsupported
 get_model_command() {
-  local model="${1:-gpt-5.1}"
+  local model="${1:-gpt-5.2}"
   local cmd=""
 
   case "$model" in
@@ -203,6 +203,11 @@ get_model_command() {
     # === Anthropic (Claude) 系モデル ===
     claude-* | haiku | sonnet | opus)
       cmd="claude -p --model ${model}"
+      ;;
+
+    # === OpenCode モデル (provider/model format) ===
+    */*)
+      cmd="opencode run --model ${model}"
       ;;
 
     # === 未対応モデル ===

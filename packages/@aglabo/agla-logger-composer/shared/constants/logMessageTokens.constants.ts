@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/shared/constants/logMessageTokens.constants.ts
+// src: packages/@aglabo/agla-logger-composer/shared/constants/logMessageTokens.constants.ts
 // @(#) Logging message token constants
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

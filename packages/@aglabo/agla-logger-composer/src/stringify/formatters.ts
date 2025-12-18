@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/formatters.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/formatters.ts
 // @(#) Stringification formatters for functions and timestamps
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

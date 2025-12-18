@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/stringifyValue.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/stringify.ts
 // @(#) Value to string conversion utility for recursive stringification
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -6,7 +6,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { _isStringifiable } from '../logValueValidator.ts';
+import { _isStringifiable } from '../validators/logValueValidator.ts';
 import { _escapeString } from './escapeString.ts';
 import { _stringifyFunction } from './formatters.ts';
 import { _stringifyArray } from './stringifyArray.ts';
@@ -21,7 +21,7 @@ import { _stringifyRecord } from './stringifyRecord.ts';
  * @param seen - WeakSet tracking visited objects
  * @returns The string representation of the value
  */
-export const _stringifyValue = (value: unknown, seen: WeakSet<object>): string => {
+export const _stringify = (value: unknown, seen: WeakSet<object>): string => {
   // Handle string-convertible primitives and special values
   if (_isStringifiable(value)) {
     // Handle string - needs escaping

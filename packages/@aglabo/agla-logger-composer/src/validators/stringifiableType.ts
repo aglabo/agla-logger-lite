@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/stringifiableType.ts
+// src: packages/@aglabo/agla-logger-composer/src/validators/stringifiableType.ts
 // @(#) Type detection for stringifiable values
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -7,7 +7,7 @@
 // https://opensource.org/licenses/MIT
 
 import { AGTStringifiableType } from '../../shared/types/AGTstringifiableType.types.ts';
-import { _isClassInstance } from '../logValueValidator.ts';
+import { _isClassInstance } from './logValueValidator.ts';
 
 /**
  * Determines the stringifiable type of a value.

@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/shared/types/stringifiableType.ts
+// src: packages/@aglabo/agla-logger-composer/shared/types/stringifiableType.ts
 // @(#) Stringifiable type definitions for logging utilities
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

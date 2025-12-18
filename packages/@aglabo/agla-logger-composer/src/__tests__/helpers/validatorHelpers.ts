@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/__tests__/helpers/validatorHelpers.ts
+// src: packages/@aglabo/agla-logger-composer/src/__tests__/helpers/validatorHelpers.ts
 // @(#) Shared test helper functions for validator tests
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

@@ -22,7 +22,7 @@ export { _stringifyArray } from './stringifyArray.ts';
 export { _stringifyRecord } from './stringifyRecord.ts';
 
 // Type detection
-export { _stringifiableType } from './stringifiableType.ts';
+export { _stringifiableType } from '../validators/stringifiableType.ts';
 
 // Main stringification function
 export { _ensureContext, stringifyObject } from './stringifyObject.ts';

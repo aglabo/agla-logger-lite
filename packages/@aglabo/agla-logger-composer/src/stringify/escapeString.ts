@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/escapeString.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/escapeString.ts
 // @(#) String escaping utility for log value stringification
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

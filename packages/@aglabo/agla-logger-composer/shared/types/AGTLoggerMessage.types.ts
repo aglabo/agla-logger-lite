@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/shared/types/AGTLoggerMessage.types.ts
+// src: packages/@aglabo/agla-logger-composer/shared/types/AGTLoggerMessage.types.ts
 // @(#) Type definitions for structured log messages
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

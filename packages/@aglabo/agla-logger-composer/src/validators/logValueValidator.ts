@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/logValueValidator.ts
+// src: packages/@aglabo/agla-logger-composer/src/logValueValidator.ts
 // @(#) Log value validators - Type and value validators for logging
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

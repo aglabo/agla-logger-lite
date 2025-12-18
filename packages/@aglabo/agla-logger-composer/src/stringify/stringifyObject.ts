@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/stringifyObject.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/stringifyObject.ts
 // @(#) Main stringification function for objects
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -9,7 +9,7 @@
 import { AGTFormatterContext } from '../../shared/types/AGTFormatterContext.class.ts';
 import type { AGTFormatterContextOptions } from '../../shared/types/AGTstringifiableType.types.ts';
 import { _stringifyTimestamp } from './formatters.ts';
-import { _stringifiableType } from './stringifiableType.ts';
+import { _stringifiableType } from '../validators/stringifiableType.ts';
 
 /**
  * Ensures a FormatterContext instance exists.

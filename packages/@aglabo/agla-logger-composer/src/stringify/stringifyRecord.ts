@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/stringifyRecord.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/stringifyRecord.ts
 // @(#) Record/object stringification utility
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -6,7 +6,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { _stringifyValue } from './stringifyValue.ts';
+import { _stringify } from './stringify.ts';
 
 /**
  * Formats a record/object to a standardized string representation.
@@ -53,7 +53,7 @@ export const _stringifyRecord = (record: Readonly<Record<string, unknown>>, seen
   // Format each property as "key": value (JSON-compatible format)
   const pairs = keys.map((key) => {
     const value = record[key];
-    const valueStr = _stringifyValue(value, seen);
+    const valueStr = _stringify(value, seen);
     return `"${key}": ${valueStr}`;
   });
 

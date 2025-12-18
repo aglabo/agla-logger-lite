@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/createLogMessage.ts
+// src: packages/@aglabo/agla-logger-composer/src/createLogMessage.ts
 // @(#) Create formatted log message string
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -7,7 +7,7 @@
 // https://opensource.org/licenses/MIT
 
 import type { AGTLogMessage } from '#shared/types/AGTLoggerMessage.types';
-import { formatValues } from './logMessageComposer';
+import { _formatMessages, _formatValues } from './logMessageComposer';
 import { _stringifyTimestamp } from './stringify';
 
 /**
@@ -46,12 +46,12 @@ export const createLogMessage = (
 
   // Get label and message parts (convert label to uppercase for consistent output)
   const labelPart = logMessage.logLabel.toUpperCase();
-  const messagePart = logMessage.messages.join(' ');
+  const messagePart = _formatMessages(logMessage.messages);
 
   // Format objects if present
   const objectsPart = logMessage.values.length <= 0
     ? ''
-    : formatValues(logMessage.values);
+    : _formatValues(logMessage.values);
 
   // Combine all parts, filtering out empty strings
   const parts = [timestampPart, labelPart, messagePart, objectsPart]

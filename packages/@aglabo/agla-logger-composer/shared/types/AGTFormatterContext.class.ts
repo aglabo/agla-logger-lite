@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/shared/types/AGTFormatterContext.class.ts
+// src: packages/@aglabo/agla-logger-composer/shared/types/AGTFormatterContext.class.ts
 // @(#) Formatter context class for managing state during recursive object stringification
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

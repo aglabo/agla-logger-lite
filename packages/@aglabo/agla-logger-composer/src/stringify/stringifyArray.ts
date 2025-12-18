@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/stringifyArray.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/stringifyArray.ts
 // @(#) Array stringification utility
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -6,7 +6,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { _stringifyValue } from './stringifyValue.ts';
+import { _stringify } from './stringify.ts';
 
 /**
  * Formats an array to a standardized string representation.
@@ -47,7 +47,7 @@ export const _stringifyArray = (arr: readonly unknown[], seen: WeakSet<object>):
   seen.add(arr);
 
   // Format each element
-  const elements = arr.map((element) => _stringifyValue(element, seen));
+  const elements = arr.map((element) => _stringify(element, seen));
 
   // Remove from seen set after processing (cleanup)
   seen.delete(arr);

@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/parseLogger.ts
+// src: packages/@aglabo/agla-logger-composer/src/parseLogger.ts
 // @(#) Logger argument parser and validation utilities
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -7,7 +7,7 @@
 // https://opensource.org/licenses/MIT
 
 import type { AGTLogMessage } from '#shared/types/AGTLoggerMessage.types.ts';
-import { _isStringifiable } from './logValueValidator.ts';
+import { _isStringifiable } from './validators/logValueValidator.ts';
 
 /**
  * Parse logger arguments into structured log message.

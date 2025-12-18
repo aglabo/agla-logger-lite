@@ -10,12 +10,28 @@ import { createLogMessage } from './createLogMessage.ts';
 import { formatMessages, formatValues } from './logMessageComposer.ts';
 import { _isStringifiable, _isStringifiableType, _isStringifiableValue, _isTimestamp } from './logValueValidator.ts';
 import { parseLogger } from './parseLogger.ts';
+export { AG_LOGMESSAGE_TOKENS } from '../shared/constants/logMessageTokens.constants.ts';
+export { AGTFormatterContext } from '../shared/types/AGTFormatterContext.class.ts';
+export type { AGTFormatterContextOptions, AGTStringifiableType } from '../shared/types/AGTstringifiableType.types.ts';
 
 // Direct exports for backward compatibility
 export { createLogMessage } from './createLogMessage.ts';
 export { formatMessages, formatValues } from './logMessageComposer.ts';
 export { _isStringifiable, _isStringifiableType, _isStringifiableValue, _isTimestamp } from './logValueValidator.ts';
 export { parseLogger } from './parseLogger.ts';
+
+// Stringify utilities (newly refactored module)
+export {
+  _ensureContext,
+  _escapeString,
+  _stringifiableType,
+  _stringifyArray,
+  _stringifyFunction,
+  _stringifyRecord,
+  _stringifyTimestamp,
+  _stringifyValue,
+  stringifyObject,
+} from './stringify/index.ts';
 
 // AgLoggerUtils namespace - public API with utility methods
 export const AgLoggerUtils = {

@@ -6,7 +6,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { _valueToString } from './logValueUtils.ts';
+import { _stringifyValue } from './stringify';
 
 /**
  * Formats an array of strings into a message part string.
@@ -30,7 +30,7 @@ export const formatMessages = (messages: readonly string[]): string => {
 /**
  * Formats an array of values into a JSON-compatible object part string.
  *
- * Formats values using the unified log value formatting system (_valueToString),
+ * Formats values using the unified log value formatting system (_stringifyValue),
  * ensuring consistency with other logging utilities.
  *
  * @param values - Array of values to format into an object part
@@ -53,11 +53,11 @@ export const formatValues = (values: readonly unknown[]): string => {
 
   // Single value - stringify directly
   if (values.length === 1) {
-    return _valueToString(values[0], seen);
+    return _stringifyValue(values[0], seen);
   }
 
   // Multiple values - wrap in braces with comma separation
-  const stringifiedValues = values.map((value) => _valueToString(value, seen));
+  const stringifiedValues = values.map((value) => _stringifyValue(value, seen));
 
   return `{${stringifiedValues.join(', ')}}`;
 };

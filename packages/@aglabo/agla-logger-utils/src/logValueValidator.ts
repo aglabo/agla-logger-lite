@@ -104,3 +104,30 @@ export const _isStringifiable = (arg: unknown): arg is string | number | boolean
   // Check for primitive types
   return ['string', 'boolean', 'symbol'].includes(argType);
 };
+
+/**
+ * Internal: クラスインスタンス判定
+ *
+ * 値がクラスのインスタンスかどうかを判定します。
+ * 配列とプレーンオブジェクトは除外されます。
+ *
+ * @internal
+ * @param arg - 判定対象の値
+ * @returns クラスインスタンスの場合true、それ以外はfalse
+ */
+export const _isClassInstance = (arg: unknown): boolean => {
+  if (typeof arg !== 'object' || arg === null) {
+    return false;
+  }
+
+  if (Array.isArray(arg)) {
+    return false;
+  }
+
+  const proto = Object.getPrototypeOf(arg);
+  if (proto === Object.prototype || proto === null) {
+    return false;
+  }
+
+  return true;
+};

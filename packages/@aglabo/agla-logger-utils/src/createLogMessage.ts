@@ -8,7 +8,7 @@
 
 import type { AGTLogMessage } from '#shared/types/AGTLoggerMessage.types';
 import { formatValues } from './logMessageComposer';
-import { _formatTimestamp } from './logValueUtils';
+import { _stringifyTimestamp } from './stringify';
 
 /**
  * Creates a formatted log message string from a structured log message.
@@ -42,7 +42,7 @@ export const createLogMessage = (
   dispMs?: boolean,
 ): string => {
   // Format timestamp with or without milliseconds
-  const timestampPart = _formatTimestamp(logMessage.timestamp, dispMs ?? false);
+  const timestampPart = _stringifyTimestamp(logMessage.timestamp, dispMs ?? false);
 
   // Get label and message parts (convert label to uppercase for consistent output)
   const labelPart = logMessage.logLabel.toUpperCase();

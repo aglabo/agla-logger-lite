@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/__tests__/functional/parseLogger.functional.spec.ts
+// src: packages/@aglabo/agla-logger-composer/src/__tests__/functional/parseLogger.functional.spec.ts
 // @(#) Functional tests for parseLogger - API level argument parsing
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

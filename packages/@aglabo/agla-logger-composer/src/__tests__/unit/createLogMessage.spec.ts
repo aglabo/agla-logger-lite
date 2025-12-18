@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/__tests__/unit/createLog.spec.ts
+// src: packages/@aglabo/agla-logger-composer/src/__tests__/unit/createLog.spec.ts
 // @(#) Unit tests for createLogMessage function
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

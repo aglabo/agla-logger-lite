@@ -1,5 +1,5 @@
-// src: shared/common/configs/vitest.config.e2e.ts
-// @(#) : Vitest end-to-end test configuration for @aglabo/agla-logger-utils
+// src: shared/common/configs/vitest.config.ci.ts
+// @(#) : Vitest integration test configuration for @aglabo/agla-logger-composer
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 //
@@ -7,10 +7,8 @@
 // https://opensource.org/licenses/MIT
 
 // libs for base directory
-import path from 'path';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-
 // base directory
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const __rootDir = path.resolve(__dirname, '../');
@@ -29,14 +27,14 @@ export default mergeConfig(baseConfig, {
   plugins: [tsconfigPaths()],
   test: {
     include: [
-      // CI (End-to-End) Tests
-      'tests/e2e/**/*.test.ts',
-      'tests/e2e/**/*.spec.ts',
+      // CI (Integration) Tests
+      'tests/integration/**/*.test.ts',
+      'tests/integration/**/*.spec.ts',
     ],
     exclude: [
       '**/__tests__/*',
     ],
-    cacheDir: path.resolve(__rootDir, '.cache/vitest-cache/e2e/'),
+    cacheDir: path.resolve(__rootDir, '.cache/vitest-cache/ci/'),
     // parallel test
     sequence: {
       concurrent: true,
@@ -45,7 +43,7 @@ export default mergeConfig(baseConfig, {
     coverage: {
       provider: 'v8',
       reporter: ['json', 'lcov'],
-      reportsDirectory: path.resolve(__rootDir, 'coverage/e2e'),
+      reportsDirectory: path.resolve(__rootDir, 'coverage/integration'),
     },
   },
 });

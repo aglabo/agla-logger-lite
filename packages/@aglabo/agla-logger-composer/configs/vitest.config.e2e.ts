@@ -1,5 +1,5 @@
-// src: shared/common/configs/vitest.config.functional.ts
-// @(#) : Vitest functional test configuration for @aglabo/agla-logger-utils
+// src: shared/common/configs/vitest.config.e2e.ts
+// @(#) : Vitest end-to-end test configuration for @aglabo/agla-logger-composer
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 //
@@ -7,8 +7,10 @@
 // https://opensource.org/licenses/MIT
 
 // libs for base directory
-import path, { dirname } from 'path';
+import path from 'path';
+import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+
 // base directory
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const __rootDir = path.resolve(__dirname, '../');
@@ -27,25 +29,23 @@ export default mergeConfig(baseConfig, {
   plugins: [tsconfigPaths()],
   test: {
     include: [
-      // Functional Test - single feature complete behavior verification
-      'src/**/__tests__/functional/**/*.spec.ts',
-      'src/**/__tests__/functional/**/*.test.ts',
+      // CI (End-to-End) Tests
+      'tests/e2e/**/*.test.ts',
+      'tests/e2e/**/*.spec.ts',
     ],
     exclude: [
-      'src/**/__tests__/units/**/*',
-      'src/**/__tests__/runtime/**/*',
-      'tests/**/*',
+      '**/__tests__/*',
     ],
-    cacheDir: path.resolve(__rootDir, '.cache/vitest-cache/functional/'),
-    // sequential test execution to avoid singleton state conflicts in functional tests
+    cacheDir: path.resolve(__rootDir, '.cache/vitest-cache/e2e/'),
+    // parallel test
     sequence: {
-      concurrent: false,
+      concurrent: true,
     },
     //
     coverage: {
       provider: 'v8',
       reporter: ['json', 'lcov'],
-      reportsDirectory: path.resolve(__rootDir, 'coverage/functional'),
+      reportsDirectory: path.resolve(__rootDir, 'coverage/e2e'),
     },
   },
 });

@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/__tests__/unit/stringifyArray.spec.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/__tests__/unit/stringifyArray.spec.ts
 // @(#) Unit tests for array stringification
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

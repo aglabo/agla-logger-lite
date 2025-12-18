@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/__tests__/unit/formatters.spec.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/__tests__/unit/formatters.spec.ts
 // @(#) Unit tests for stringification formatters
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

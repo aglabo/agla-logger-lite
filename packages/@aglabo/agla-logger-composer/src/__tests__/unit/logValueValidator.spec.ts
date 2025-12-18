@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/__tests__/unit/logValueValidator.spec.ts
+// src: packages/@aglabo/agla-logger-composer/src/__tests__/unit/logValueValidator.spec.ts
 // @(#) Unit tests for logValueValidator functions
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

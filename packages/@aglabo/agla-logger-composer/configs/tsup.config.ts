@@ -1,5 +1,5 @@
 // src: shared/common/configs/tsup.config.module.ts
-// @(#) : tsup build configuration for @aglabo/agla-logger-utils
+// @(#) : tsup build configuration for @aglabo/agla-logger-composer
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 //

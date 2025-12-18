@@ -1,10 +1,13 @@
-// src: shared/common/configs/vitest.config.ci.ts
-// @(#) : Vitest integration test configuration for @aglabo/agla-logger-utils
+// src: shared/common/configs/vitest.config.unit.ts
+// @(#) : Vitest unit test configuration for @aglabo/agla-logger-composer
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
+
+// plugins
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 // libs for base directory
 import path, { dirname } from 'path';
@@ -12,9 +15,6 @@ import { fileURLToPath } from 'url';
 // base directory
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const __rootDir = path.resolve(__dirname, '../');
-
-// plugins
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 // system config
 import { mergeConfig } from 'vitest/config';
@@ -27,23 +27,25 @@ export default mergeConfig(baseConfig, {
   plugins: [tsconfigPaths()],
   test: {
     include: [
-      // CI (Integration) Tests
-      'tests/integration/**/*.test.ts',
-      'tests/integration/**/*.spec.ts',
+      // Unit Test - pure unit tests for individual functions/methods
+      'src/**/__tests__/**/*.spec.ts',
+      'src/**/__tests__/**/*.test.ts',
     ],
     exclude: [
-      '**/__tests__/*',
+      'src/**/__tests__/functional/**/*',
+      'src/**/__tests__/runtime/**/*',
+      'tests/**/*',
     ],
-    cacheDir: path.resolve(__rootDir, '.cache/vitest-cache/ci/'),
-    // parallel test
+    cacheDir: path.resolve(__rootDir, '.cache/vitest-cache/unit/'),
+    // sequential test execution to avoid singleton state conflicts
     sequence: {
-      concurrent: true,
+      concurrent: false,
     },
     //
     coverage: {
       provider: 'v8',
       reporter: ['json', 'lcov'],
-      reportsDirectory: path.resolve(__rootDir, 'coverage/integration'),
+      reportsDirectory: path.resolve(__rootDir, 'coverage/unit'),
     },
   },
 });

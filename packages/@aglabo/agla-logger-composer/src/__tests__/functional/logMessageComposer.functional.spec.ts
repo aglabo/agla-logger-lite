@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/__tests__/functional/logMessageComposer.functional.spec.ts
+// src: packages/@aglabo/agla-logger-composer/src/__tests__/functional/logMessageComposer.functional.spec.ts
 // @(#) Functional tests for logMessageComposer module
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

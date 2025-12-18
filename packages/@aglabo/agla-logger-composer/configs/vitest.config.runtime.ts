@@ -1,5 +1,5 @@
-// src: shared/common/configs/vitest.config.unit.ts
-// @(#) : Vitest unit test configuration for @aglabo/agla-logger-utils
+// src: shared/common/configs/vitest.config.runtime.ts
+// @(#) : Vitest cross-runtime test configuration for @aglabo/agla-logger-composer
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 //
@@ -27,17 +27,20 @@ export default mergeConfig(baseConfig, {
   plugins: [tsconfigPaths()],
   test: {
     include: [
-      // Unit Test - pure unit tests for individual functions/methods
-      'src/**/__tests__/**/*.spec.ts',
-      'src/**/__tests__/**/*.test.ts',
+      // Runtime Test - tests that run in actual runtime environments
+      'src/__tests__/runtime/node/*.runtime.spec.ts',
+      'src/__tests__/runtime/node/*.spec.ts',
+      'src/__tests__/runtime/node/*.test.ts',
+      // Note: Bun tests are in src/__tests__/runtime/bun/*.runtime.spec.ts
+      //       but they are run using Bun's native test runner (see package.json test:runtime:bun)
+      // Note: Deno tests are in src/__tests__/runtime/deno/*.runtime.spec.ts
+      //       but they are run using Deno's native test runner (see package.json test:runtime:deno)
     ],
     exclude: [
-      'src/**/__tests__/functional/**/*',
-      'src/**/__tests__/runtime/**/*',
       'tests/**/*',
     ],
-    cacheDir: path.resolve(__rootDir, '.cache/vitest-cache/unit/'),
-    // sequential test execution to avoid singleton state conflicts
+    cacheDir: path.resolve(__rootDir, '.cache/vitest-cache/runtime/'),
+    // sequential test execution to avoid runtime conflicts
     sequence: {
       concurrent: false,
     },
@@ -45,7 +48,7 @@ export default mergeConfig(baseConfig, {
     coverage: {
       provider: 'v8',
       reporter: ['json', 'lcov'],
-      reportsDirectory: path.resolve(__rootDir, 'coverage/unit'),
+      reportsDirectory: path.resolve(__rootDir, 'coverage/runtime'),
     },
   },
 });

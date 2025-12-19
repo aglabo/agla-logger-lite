@@ -7,13 +7,13 @@
 // https://opensource.org/licenses/MIT
 
 import { describe, expect, it } from 'vitest';
+import { testValidator } from '../../../__tests__/helpers/validatorHelpers.ts';
 import {
   _isStringifiable,
   _isStringifiableType,
   _isStringifiableValue,
   _isTimestamp,
-} from '../../../validators/logValueValidator';
-import { testValidator } from '../../helpers/validatorHelpers.ts';
+} from '../../logValueValidator';
 
 // ============================================================================
 // _isTimestamp Tests

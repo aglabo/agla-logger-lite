@@ -32,7 +32,7 @@ export default mergeConfig(baseConfig, {
       'src/**/__tests__/functional/**/*.test.ts',
     ],
     exclude: [
-      'src/**/__tests__/units/**/*',
+      'src/**/__tests__/unit/**/*',
       'src/**/__tests__/runtime/**/*',
       'tests/**/*',
     ],

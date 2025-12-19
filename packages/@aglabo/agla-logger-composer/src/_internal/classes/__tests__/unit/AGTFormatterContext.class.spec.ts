@@ -6,8 +6,8 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { describe, expect, it } from 'vitest';
 import { AGTFormatterContext } from '#shared/types/AGTFormatterContext.class';
+import { describe, expect, it } from 'vitest';
 
 // ============================================================================
 // Block 1: [正常] Constructor - Default Values

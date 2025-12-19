@@ -1,7 +1,7 @@
 {
-  "name": "@aglabo/agla-logger-utils",
-  "_comment": "@(#) General-purpose logger utility functions with formatters, validators, and helper utilities for logging frameworks",
-  "description": "General-purpose utility functions for logging frameworks including log formatters, message validators, timestamp utilities, and cross-runtime helpers",
+  "name": "@aglabo/agla-logger-composer",
+  "_comment": "@(#) Log message composer library with formatters, validators, and stringify utilities for logging frameworks",
+  "description": "Log message composer library for logging frameworks including log formatters, message validators, timestamp utilities, and cross-runtime helpers",
   "version": "0.1.0",
   "private": false,
   "author": "atsushifx <https://github.com/atsushifx>",
@@ -9,7 +9,6 @@
   "type": "module",
   "types": "./module/index.d.ts",
   "imports": {
-    "#": "./src",
     "#/*": "./src/*",
     "#src": "./src",
     "#src/*": "./src/*",

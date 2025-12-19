@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-utils/src/stringify/index.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/index.ts
 // @(#) Stringification utilities - exports aggregation
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -10,7 +10,7 @@
 export { _escapeString } from './escapeString.ts';
 
 // Value to string conversion
-export { _stringifyValue } from './stringifyValue.ts';
+export { _stringify } from './stringify.ts';
 
 // Formatters
 export { _stringifyFunction, _stringifyTimestamp } from './formatters.ts';

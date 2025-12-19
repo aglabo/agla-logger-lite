@@ -1,5 +1,5 @@
-// src: packages/@aglabo/agla-logger-utils/src/index.ts
-// @(#) Main entry point for logger utility functions
+// src: packages/@aglabo/agla-logger-composer/src/index.ts
+// @(#) Main entry point for log message composer library
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 //
@@ -7,7 +7,6 @@
 // https://opensource.org/licenses/MIT
 
 import { createLogMessage } from './createLogMessage.ts';
-import { formatMessages, formatValues } from './logMessageComposer.ts';
 import { _isStringifiable, _isStringifiableType, _isStringifiableValue, _isTimestamp } from './validators/logValueValidator.ts';
 import { parseLogger } from './parseLogger.ts';
 export { AG_LOGMESSAGE_TOKENS } from '../shared/constants/logMessageTokens.constants.ts';
@@ -16,7 +15,6 @@ export type { AGTFormatterContextOptions, AGTStringifiableType } from '../shared
 
 // Direct exports for backward compatibility
 export { createLogMessage } from './createLogMessage.ts';
-export { formatMessages, formatValues } from './logMessageComposer.ts';
 export { _isStringifiable, _isStringifiableType, _isStringifiableValue, _isTimestamp } from './validators/logValueValidator.ts';
 export { parseLogger } from './parseLogger.ts';
 
@@ -29,16 +27,14 @@ export {
   _stringifyFunction,
   _stringifyRecord,
   _stringifyTimestamp,
-  _stringifyValue,
+  _stringify,
   stringifyObject,
 } from './stringify/index.ts';
 
-// AgLoggerUtils namespace - public API with utility methods
-export const AgLoggerUtils = {
+// AgLogComposer namespace - public API with utility methods
+export const AgLogComposer = {
   // Logger functions
-  formatMessages,
   createLogMessage,
-  formatValues,
   parseLogger,
   // Validator functions (public API without underscore prefix)
   isStringifiable: _isStringifiable,

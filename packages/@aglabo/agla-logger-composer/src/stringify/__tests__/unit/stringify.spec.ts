@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-composer/src/stringify/__tests__/unit/stringifyValue.spec.ts
+// src: packages/@aglabo/agla-logger-composer/src/stringify/__tests__/unit/stringify.spec.ts
 // @(#) Unit tests for value to string conversion
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -7,10 +7,10 @@
 // https://opensource.org/licenses/MIT
 
 import { describe, expect, it } from 'vitest';
-import { _stringifyValue } from '../../stringifyValue.ts';
+import { _stringify } from '../../stringify.ts';
 
-describe('Given: stringifyValue module', () => {
-  describe('When: _stringifyValue is called', () => {
+describe('Given: stringify module', () => {
+  describe('When: _stringify is called', () => {
     describe('Then: [正常] Primitive string values', () => {
       it('Given string "hello", When called, Then return escaped string', () => {
         // Arrange
@@ -18,7 +18,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('"hello"');
@@ -30,7 +30,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('""');
@@ -42,7 +42,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('"line1\\nline2"');
@@ -56,7 +56,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('42');
@@ -68,7 +68,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('3.14');
@@ -80,7 +80,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('0');
@@ -92,7 +92,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('-42');
@@ -106,7 +106,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('NaN');
@@ -118,7 +118,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('Infinity');
@@ -130,7 +130,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('-Infinity');
@@ -144,7 +144,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('true');
@@ -156,7 +156,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('false');
@@ -170,7 +170,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('null');
@@ -182,7 +182,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('undefined');
@@ -196,7 +196,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('[Function: test]');
@@ -208,7 +208,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('[Function:]');
@@ -221,7 +221,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('[Method: myMethod]');
@@ -235,7 +235,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('[]');
@@ -247,7 +247,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('[1, 2, 3]');
@@ -259,7 +259,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('["a", "b"]');
@@ -271,7 +271,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('[1, [2, 3]]');
@@ -285,7 +285,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('{}');
@@ -297,7 +297,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('{"a": 1}');
@@ -309,7 +309,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('{"a": 1, "b": "text"}');
@@ -321,7 +321,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('{"a": {"b": 1}}');
@@ -336,7 +336,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toContain('[<Circular>]');
@@ -351,7 +351,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toContain('{<Circular>}');
@@ -365,7 +365,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('[{"a": 1}, [2, 3]]');
@@ -377,7 +377,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('{"a": [1, {"b": [2, 3]}]}');
@@ -389,7 +389,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('[1, "text", true, null, {"a": 1}]');
@@ -403,7 +403,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toMatch(/Symbol/);
@@ -417,7 +417,7 @@ describe('Given: stringifyValue module', () => {
         const seen = new WeakSet<object>();
 
         // Act
-        const result = _stringifyValue(value, seen);
+        const result = _stringify(value, seen);
 
         // Assert
         expect(result).toBe('123456789');

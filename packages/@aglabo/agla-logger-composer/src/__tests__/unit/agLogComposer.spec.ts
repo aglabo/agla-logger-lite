@@ -143,15 +143,5 @@ describe('[正常] AgLogComposer - ネームスペース経由でのexport確認
       expect(AgLogComposer.parseLogger).toBeDefined();
       expect(typeof AgLogComposer.parseLogger).toBe('function');
     });
-
-    it('Given AgLogComposer namespace, When checking formatMessages, Then should be accessible', () => {
-      expect(AgLogComposer.formatMessages).toBeDefined();
-      expect(typeof AgLogComposer.formatMessages).toBe('function');
-    });
-
-    it('Given AgLogComposer namespace, When checking formatValues, Then should be accessible', () => {
-      expect(AgLogComposer.formatValues).toBeDefined();
-      expect(typeof AgLogComposer.formatValues).toBe('function');
-    });
   });
 });

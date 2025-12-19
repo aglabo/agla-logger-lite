@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-composer/src/__tests__/unit/logValueValidator.spec.ts
+// src: packages/@aglabo/agla-logger-composer/src/__tests__/unit/validators/logValueValidator.spec.ts
 // @(#) Unit tests for logValueValidator functions
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -12,8 +12,8 @@ import {
   _isStringifiableType,
   _isStringifiableValue,
   _isTimestamp,
-} from '../../logValueValidator';
-import { testValidator } from '../helpers/validatorHelpers.ts';
+} from '../../../validators/logValueValidator';
+import { testValidator } from '../../helpers/validatorHelpers.ts';
 
 // ============================================================================
 // _isTimestamp Tests

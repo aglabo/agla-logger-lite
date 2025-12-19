@@ -7,12 +7,12 @@
 // https://opensource.org/licenses/MIT
 
 import { describe, expect, it } from 'vitest';
-import { formatMessages, formatValues } from '../../logMessageComposer.ts';
+import { _formatMessages, _formatValues } from '../../logMessageComposer.ts';
 
 // Feature レベル (Given)
 describe('Given: logMessageComposer module', () => {
   // Scenario レベル (When)
-  describe('When: formatMessages() is called', () => {
+  describe('When: _formatMessages() is called', () => {
     // Case レベル (Then) - [正常] Standard conversions
     describe('Then: [正常] Standard conversions', () => {
       it('Given string array, When parsing, Then concatenate with spaces', () => {
@@ -21,7 +21,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = 'Hello World';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -33,7 +33,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = 'Error 404 Not found';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -45,7 +45,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = 'true false true';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -57,7 +57,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = 'Symbol: Symbol(test)';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -69,7 +69,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = 'single';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -81,7 +81,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '0';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -93,7 +93,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = ' text';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -105,7 +105,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '42 100 999';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -120,7 +120,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -132,7 +132,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -144,7 +144,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '  ';
 
         // Act
-        const result = formatMessages(input);
+        const result = _formatMessages(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -153,7 +153,7 @@ describe('Given: logMessageComposer module', () => {
   });
 
   // Scenario レベル (When)
-  describe('When: formatValues() is called', () => {
+  describe('When: _formatValues() is called', () => {
     // Case レベル (Then) - [正常] Standard conversions
     describe('Then: [正常] Standard conversions', () => {
       it('Given single object, When parsing, Then returns JSON.stringify result', () => {
@@ -162,7 +162,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{"a": 1}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -174,7 +174,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{{"a": 1}, {"b": 2}}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -186,7 +186,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = 'null';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -198,7 +198,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = 'undefined';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -210,7 +210,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '42';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -222,7 +222,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '"string"';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -234,7 +234,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{true, false}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -246,7 +246,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{"a": {"b": {"c": 1}}}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -258,7 +258,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '[1, 2, 3]';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -270,7 +270,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{{"a": 1}, {"b": 2}, {"c": 3}}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -285,7 +285,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{"a": undefined}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -297,7 +297,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{"a": NaN}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -309,7 +309,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{"a": Infinity}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -321,7 +321,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{"a": [Function:], "b": 1}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -333,7 +333,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{null, null, null}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -348,7 +348,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -360,7 +360,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -372,7 +372,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '""';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);
@@ -383,7 +383,7 @@ describe('Given: logMessageComposer module', () => {
         const input = [{ a: { b: { c: { d: { e: { f: 1 } } } } } }];
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toContain('"a"');
@@ -396,7 +396,7 @@ describe('Given: logMessageComposer module', () => {
         const input = [largeArray];
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toContain('[');
@@ -409,7 +409,7 @@ describe('Given: logMessageComposer module', () => {
         const input = [{ emoji: '😀', japanese: 'テスト' }];
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toContain('emoji');
@@ -425,7 +425,7 @@ describe('Given: logMessageComposer module', () => {
         const expected = '{"a": 1, "self": {<Circular>}}';
 
         // Act
-        const result = formatValues(input);
+        const result = _formatValues(input);
 
         // Assert
         expect(result).toBe(expected);

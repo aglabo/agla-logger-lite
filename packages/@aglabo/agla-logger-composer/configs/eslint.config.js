@@ -40,6 +40,10 @@ export default [
       parserOptions: {
         tsconfigRootDir: __rootDir,
       },
+      globals: {
+        URL: 'readonly',
+        URLSearchParams: 'readonly',
+      },
     },
     settings: {
       'import/resolver': {

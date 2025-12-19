@@ -7,27 +7,37 @@
 // https://opensource.org/licenses/MIT
 
 import { createLogMessage } from './createLogMessage.ts';
-import { _isStringifiable, _isStringifiableType, _isStringifiableValue, _isTimestamp } from './validators/logValueValidator.ts';
 import { parseLogger } from './parseLogger.ts';
+import {
+  _isStringifiable,
+  _isStringifiableType,
+  _isStringifiableValue,
+  _isTimestamp,
+} from './validators/logValueValidator.ts';
 export { AG_LOGMESSAGE_TOKENS } from '../shared/constants/logMessageTokens.constants.ts';
 export { AGTFormatterContext } from '../shared/types/AGTFormatterContext.class.ts';
 export type { AGTFormatterContextOptions, AGTStringifiableType } from '../shared/types/AGTstringifiableType.types.ts';
 
 // Direct exports for backward compatibility
 export { createLogMessage } from './createLogMessage.ts';
-export { _isStringifiable, _isStringifiableType, _isStringifiableValue, _isTimestamp } from './validators/logValueValidator.ts';
 export { parseLogger } from './parseLogger.ts';
+export {
+  _isStringifiable,
+  _isStringifiableType,
+  _isStringifiableValue,
+  _isTimestamp,
+} from './validators/logValueValidator.ts';
 
 // Stringify utilities (newly refactored module)
 export {
   _ensureContext,
   _escapeString,
   _stringifiableType,
+  _stringify,
   _stringifyArray,
   _stringifyFunction,
   _stringifyRecord,
   _stringifyTimestamp,
-  _stringify,
   stringifyObject,
 } from './stringify/index.ts';
 

@@ -1,5 +1,5 @@
-// src: packages/@aglabo/agla-logger-composer/shared/types/AGTFormatterEnvironment.class.ts
-// @(#) Immutable formatter environment for functional recursive object stringification
+// src: packages/@aglabo/agla-logger-composer/shared/types/AGTFormatEnvironment.class.ts
+// @(#) Immutable format environment for functional recursive object stringification
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 //
@@ -7,10 +7,10 @@
 // https://opensource.org/licenses/MIT
 
 /**
- * Environment options for AGTFormatterEnvironment initialization.
- * Independent type for configuring formatter environment.
+ * Environment options for AGTFormatEnvironment initialization.
+ * Independent type for configuring format environment.
  */
-export type AGTFormatterEnvironmentConfigs = {
+export type AGTFormatEnvironmentConfigs = {
   /** Maximum number of elements to display in collections (default: 100) */
   readonly maxElements?: number;
   /** Display elements limit for collections */
@@ -20,23 +20,23 @@ export type AGTFormatterEnvironmentConfigs = {
 };
 
 /**
- * Immutable formatter environment for managing state during recursive object stringification.
+ * Immutable format environment for managing state during recursive object stringification.
  * All properties are readonly and state changes return new instances.
  *
- * @class AGTFormatterEnvironment
+ * @class AGTFormatEnvironment
  * @example
  * ```typescript
- * const env1 = new AGTFormatterEnvironment({ maxDepth: 3 });
+ * const env1 = new AGTFormatEnvironment({ maxDepth: 3 });
  * env1.addSeed(obj)
  * env1.hasSeed(obj) // true
  * // env2.seen shares the same WeakSet as env1
  * ```
  */
-export class AGTFormatterEnvironment {
-  readonly configs: Required<AGTFormatterEnvironmentConfigs>;
+export class AGTFormatEnvironment {
+  readonly configs: Required<AGTFormatEnvironmentConfigs>;
   seed: WeakSet<object> = new WeakSet();
 
-  constructor(configs?: AGTFormatterEnvironmentConfigs) {
+  constructor(configs?: AGTFormatEnvironmentConfigs) {
     const defaultConfigs = {
       maxElements: 100,
       maxDisplayElements: 3,
@@ -145,7 +145,7 @@ export class AGTFormatterEnvironment {
    * @returns true if the object exists in seed, false otherwise
    * @example
    * ```typescript
-   * const env = new AGTFormatterEnvironment();
+   * const env = new AGTFormatEnvironment();
    * const obj = { name: 'test' };
    * env.addSeed(obj);
    * env.hasSeed(obj); // true
@@ -164,7 +164,7 @@ export class AGTFormatterEnvironment {
    * @throws {TypeError} if obj is null or not an object
    * @example
    * ```typescript
-   * const env = new AGTFormatterEnvironment();
+   * const env = new AGTFormatEnvironment();
    * const obj = { name: 'test' };
    * env.addSeed(obj);
    * env.hasSeed(obj); // true
@@ -185,7 +185,7 @@ export class AGTFormatterEnvironment {
    * @param obj - The object to delete from the seed
    * @example
    * ```typescript
-   * const env = new AGTFormatterEnvironment();
+   * const env = new AGTFormatEnvironment();
    * const obj = { name: 'test' };
    * env.addSeed(obj);
    * env.deleteSeed(obj);

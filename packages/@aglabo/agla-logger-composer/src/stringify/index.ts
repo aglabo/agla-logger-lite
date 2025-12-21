@@ -25,4 +25,4 @@ export { _stringifyRecord } from './stringifyRecord.ts';
 export { _stringifiableType } from '../validators/stringifiableType.ts';
 
 // Main stringification function
-export { _ensureContext, stringifyObject } from './stringifyObject.ts';
+export { _stringifyObject } from './stringifyObject.ts';

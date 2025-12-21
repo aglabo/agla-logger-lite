@@ -6,72 +6,23 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+import { agFormat } from '#shared/types/AGTFormatContext.types.ts';
+import { AGTFormatEnvironment } from '#shared/types/AGTFormatEnvironment.class.ts';
 import { describe, expect, it } from 'vitest';
-import { AGTFormatterContext } from '../../../../shared/types/AGTFormatterContext.class.ts';
-import { _ensureContext, stringifyObject } from '../../stringifyObject.ts';
+import { _stringifyObject } from '../../stringifyObject.ts';
+
+// Default environment for tests
+const defaultEnv = new AGTFormatEnvironment();
 
 describe('Given: stringifyObject module', () => {
-  describe('When: _ensureContext is called', () => {
-    describe('Then: [正常] With existing context', () => {
-      it('Given existing AGTFormatterContext, When called, Then return same context', () => {
-        // Arrange
-        const existingContext = new AGTFormatterContext();
-
-        // Act
-        const result = _ensureContext(existingContext);
-
-        // Assert
-        expect(result).toBe(existingContext);
-      });
-    });
-
-    describe('Then: [正常] Without context', () => {
-      it('Given no context and no options, When called, Then create new context', () => {
-        // Arrange
-        // No context provided
-
-        // Act
-        const result = _ensureContext();
-
-        // Assert
-        expect(result).toBeInstanceOf(AGTFormatterContext);
-      });
-
-      it('Given no context but with options, When called, Then create context with options', () => {
-        // Arrange
-        const options = {};
-
-        // Act
-        const result = _ensureContext(undefined, options);
-
-        // Assert
-        expect(result).toBeInstanceOf(AGTFormatterContext);
-      });
-    });
-
-    describe('Then: [異常] Context with options', () => {
-      it('Given existing context with options, When called, Then context takes precedence over options', () => {
-        // Arrange
-        const existingContext = new AGTFormatterContext();
-        const options = {};
-
-        // Act
-        const result = _ensureContext(existingContext, options);
-
-        // Assert
-        expect(result).toBe(existingContext);
-      });
-    });
-  });
-
-  describe('When: stringifyObject is called', () => {
+  describe('When: _stringifyObject is called', () => {
     describe('Then: [正常] Date object', () => {
       it('Given Date object 1970-01-01T00:00:01.000Z, When called, Then return ISO string with milliseconds', () => {
         // Arrange
         const value = new Date(1000);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('1970-01-01T00:00:01.000Z');
@@ -82,7 +33,7 @@ describe('Given: stringifyObject module', () => {
         const value = new Date(1609459200000);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('2021-01-01T00:00:00.000Z');
@@ -93,7 +44,7 @@ describe('Given: stringifyObject module', () => {
         const value = new Date(0);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('1970-01-01T00:00:00.000Z');
@@ -104,10 +55,10 @@ describe('Given: stringifyObject module', () => {
       it('Given Date with context, When called, Then return formatted ISO string', () => {
         // Arrange
         const value = new Date(1000);
-        const context = new AGTFormatterContext();
+        const context = agFormat.createContext();
 
         // Act
-        const result = stringifyObject(value, context);
+        const result = _stringifyObject(value, context, defaultEnv);
 
         // Assert
         expect(result).toBe('1970-01-01T00:00:01.000Z');
@@ -120,7 +71,7 @@ describe('Given: stringifyObject module', () => {
         const value = 42;
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('42');
@@ -131,7 +82,7 @@ describe('Given: stringifyObject module', () => {
         const value = 'hello';
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('hello');
@@ -142,7 +93,7 @@ describe('Given: stringifyObject module', () => {
         const value = true;
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('true');
@@ -155,7 +106,7 @@ describe('Given: stringifyObject module', () => {
         const value = new Map();
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<Map>');
@@ -166,7 +117,7 @@ describe('Given: stringifyObject module', () => {
         const value = new Set();
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<Set>');
@@ -177,7 +128,7 @@ describe('Given: stringifyObject module', () => {
         const value = /test/;
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<RegExp>');
@@ -188,7 +139,7 @@ describe('Given: stringifyObject module', () => {
         const value = new Error('test');
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<Error>');
@@ -199,7 +150,7 @@ describe('Given: stringifyObject module', () => {
         const value = new URL('https://example.com/path?key=value');
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<URL>');
@@ -210,7 +161,7 @@ describe('Given: stringifyObject module', () => {
         const value = new URLSearchParams('key=value&foo=bar');
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<URLSearchParams>');
@@ -221,7 +172,7 @@ describe('Given: stringifyObject module', () => {
         const value = new Uint8Array([1, 2, 3, 4, 5]);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<TypedArray>');
@@ -232,7 +183,7 @@ describe('Given: stringifyObject module', () => {
         const value = new Int32Array([100, 200, 300]);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<TypedArray>');
@@ -243,7 +194,7 @@ describe('Given: stringifyObject module', () => {
         const value = new ArrayBuffer(8);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<ArrayBuffer>');
@@ -255,7 +206,7 @@ describe('Given: stringifyObject module', () => {
         const value = new DataView(buffer);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<DataView>');
@@ -270,7 +221,7 @@ describe('Given: stringifyObject module', () => {
         const value = new CustomClass();
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<CustomClass>');
@@ -281,7 +232,7 @@ describe('Given: stringifyObject module', () => {
         const value = { a: 1 };
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         // Plain objects are converted to string via String() when type is not recognized
@@ -293,7 +244,7 @@ describe('Given: stringifyObject module', () => {
         const value = [1, 2, 3];
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         // Arrays are converted to string via String() when type is not recognized
@@ -305,7 +256,7 @@ describe('Given: stringifyObject module', () => {
         const value = (): void => {};
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         // Functions are converted to string via String() when type is not recognized
@@ -319,7 +270,7 @@ describe('Given: stringifyObject module', () => {
         const value = null;
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('null');
@@ -330,7 +281,7 @@ describe('Given: stringifyObject module', () => {
         const value = undefined;
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('undefined');
@@ -341,7 +292,7 @@ describe('Given: stringifyObject module', () => {
         const value = Number.NaN;
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('NaN');
@@ -352,7 +303,7 @@ describe('Given: stringifyObject module', () => {
         const value = Number.POSITIVE_INFINITY;
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('Infinity');
@@ -365,7 +316,7 @@ describe('Given: stringifyObject module', () => {
         const value = new URL('https://example.com/path?a=1&b=2&c=3');
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<URL>');
@@ -380,7 +331,7 @@ describe('Given: stringifyObject module', () => {
         ]);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<URLSearchParams>');
@@ -391,7 +342,7 @@ describe('Given: stringifyObject module', () => {
         const value = new Float64Array([1.5, 2.5, 3.5]);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<TypedArray>');
@@ -402,7 +353,7 @@ describe('Given: stringifyObject module', () => {
         const value = new BigInt64Array([BigInt(100), BigInt(200)]);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<TypedArray>');
@@ -413,7 +364,7 @@ describe('Given: stringifyObject module', () => {
         const value = new ArrayBuffer(1024);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<ArrayBuffer>');
@@ -425,7 +376,7 @@ describe('Given: stringifyObject module', () => {
         const value = new DataView(buffer, 4, 8);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<DataView>');
@@ -441,7 +392,7 @@ describe('Given: stringifyObject module', () => {
         const value = new PersonClass();
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<PersonClass>');
@@ -458,7 +409,7 @@ describe('Given: stringifyObject module', () => {
         const value = new DerivedClass();
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<DerivedClass>');
@@ -472,7 +423,7 @@ describe('Given: stringifyObject module', () => {
         ]);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<Map>');
@@ -483,7 +434,7 @@ describe('Given: stringifyObject module', () => {
         const value = new Set([1, 2, 3, 4, 5]);
 
         // Act
-        const result = stringifyObject(value);
+        const result = _stringifyObject(value, agFormat.createContext(), defaultEnv);
 
         // Assert
         expect(result).toBe('<Set>');

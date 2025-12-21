@@ -10,7 +10,7 @@
  * Environment options for AGTFormatterEnvironment initialization.
  * Independent type for configuring formatter environment.
  */
-export type AGTFormatterEnvironmentOptions = {
+export type AGTFormatterEnvironmentConfigs = {
   /** Maximum number of elements to display in collections (default: 100) */
   readonly maxElements?: number;
   /** Display elements limit for collections */
@@ -33,10 +33,10 @@ export type AGTFormatterEnvironmentOptions = {
  * ```
  */
 export class AGTFormatterEnvironment {
-  readonly configs: Required<AGTFormatterEnvironmentOptions>;
+  readonly configs: Required<AGTFormatterEnvironmentConfigs>;
   seed: WeakSet<object> = new WeakSet();
 
-  constructor(configs?: AGTFormatterEnvironmentOptions) {
+  constructor(configs?: AGTFormatterEnvironmentConfigs) {
     const defaultConfigs = {
       maxElements: 100,
       maxDisplayElements: 3,

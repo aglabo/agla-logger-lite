@@ -7,7 +7,7 @@
 # If not set, bd init will auto-detect from directory name
 # Example: issue-prefix: "myProject" creates issues like "myProject-1", "myProject-2", etc.
 # issue-prefix: ""
-issue-prefix: "aGll"
+issue-prefix: "ll"
 
 # Use no-db mode: load from JSONL, no SQLite, write back after each command
 # When true, bd will use .beads/issues.jsonl as the source of truth

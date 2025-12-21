@@ -8,8 +8,8 @@
 
 import { AGTFormatterContext } from '../../shared/types/AGTFormatterContext.class.ts';
 import type { AGTFormatterContextOptions } from '../../shared/types/AGTstringifiableType.types.ts';
-import { _stringifyTimestamp } from './formatters.ts';
 import { _stringifiableType } from '../validators/stringifiableType.ts';
+import { _stringifyTimestamp } from './formatters.ts';
 
 /**
  * Ensures a FormatterContext instance exists.
@@ -54,8 +54,14 @@ export const stringifyObject = (value: unknown, context?: AGTFormatterContext): 
     return _stringifyTimestamp(value, true);
   }
 
+  // Handle custom class - return actual class name
+  if (type === 'CustomClass' && typeof value === 'object' && value !== null) {
+    const className = value.constructor.name;
+    return `<${className}>`;
+  }
+
   // Placeholder for other types - actual implementation will be in T4 group
-  return `[${type}]`;
+  return `<${type}>`;
 };
 
 // Export ensureContext for use in other modules if needed

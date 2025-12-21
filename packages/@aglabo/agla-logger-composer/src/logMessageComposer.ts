@@ -24,7 +24,7 @@ import { _stringify } from './stringify';
  * ```
  */
 export const _formatMessages = (messages: readonly string[]): string => {
-  return messages.join(' ');
+  return messages.filter((msg) => msg !== '').join(' ');
 };
 
 /**

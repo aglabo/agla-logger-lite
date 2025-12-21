@@ -1,12 +1,12 @@
-// src: packages/@aglabo/agla-logger-composer/src/__internal/classes/__tests__/AGTFormatterEnvironment.class.spec.ts
-// @(#) Unit tests for AGTFormatterEnvironment class
+// src: packages/@aglabo/agla-logger-composer/src/__internal/classes/__tests__/AGTFormatEnvironment.class.spec.ts
+// @(#) Unit tests for AGTFormatEnvironment class
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { AGTFormatterEnvironment } from '#shared/types/AGTFormatEnvironment.class';
+import { AGTFormatEnvironment } from '#shared/types/AGTFormatEnvironment.class';
 import { describe, expect, it } from 'vitest';
 
 const specialNumberCases = [
@@ -35,7 +35,7 @@ const specialNumberCases = [
 // Test Target: Constructor
 // ============================================================================
 
-describe('AGTFormatterEnvironment - Constructor', () => {
+describe('AGTFormatEnvironment - Constructor', () => {
   // ==========================================================================
   // [正常系] Normal Cases
   // ==========================================================================
@@ -94,7 +94,7 @@ describe('AGTFormatterEnvironment - Constructor', () => {
       },
     ])('Given $description, When creating instance, Then configs should match expected', ({ configs, expected }) => {
       // Act
-      const env = new AGTFormatterEnvironment(configs);
+      const env = new AGTFormatEnvironment(configs);
 
       // Assert
       expect(env.configs.maxElements).toBe(expected.maxElements);
@@ -108,8 +108,8 @@ describe('AGTFormatterEnvironment - Constructor', () => {
     // ========================================================================
     it('Given multiple instances, When creating them, Then each should have unique seed', () => {
       // Arrange & Act
-      const env1 = new AGTFormatterEnvironment();
-      const env2 = new AGTFormatterEnvironment();
+      const env1 = new AGTFormatEnvironment();
+      const env2 = new AGTFormatEnvironment();
 
       // Assert
       expect(env1.seed).not.toBe(env2.seed);
@@ -147,7 +147,7 @@ describe('AGTFormatterEnvironment - Constructor', () => {
       },
     ])('Given $description, When creating instance, Then configs should be normalized', ({ configs, expected }) => {
       // Act
-      const env = new AGTFormatterEnvironment(configs);
+      const env = new AGTFormatEnvironment(configs);
 
       // Assert
       expect(env.configs.maxElements).toBe(expected.maxElements);
@@ -214,7 +214,7 @@ describe('AGTFormatterEnvironment - Constructor', () => {
       'Given $description, When creating instance, Then configs should match edge case behavior',
       ({ configs, expected }) => {
         // Act
-        const env = new AGTFormatterEnvironment(configs);
+        const env = new AGTFormatEnvironment(configs);
 
         // Assert
         expect(env.configs.maxElements).toBe(expected.maxElements);
@@ -229,7 +229,7 @@ describe('AGTFormatterEnvironment - Constructor', () => {
 // Test Target: isMaxElementsReached
 // ============================================================================
 
-describe('AGTFormatterEnvironment - isMaxElementsReached', () => {
+describe('AGTFormatEnvironment - isMaxElementsReached', () => {
   // ==========================================================================
   // [正常系] Normal Cases
   // ==========================================================================
@@ -246,7 +246,7 @@ describe('AGTFormatterEnvironment - isMaxElementsReached', () => {
       { description: 'count exceeds maxElements (1000/100)', maxElements: 100, count: 1000, expected: true },
     ])('Given $description, When checking, Then should return $expected', ({ maxElements, count, expected }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment({ maxElements });
+      const env = new AGTFormatEnvironment({ maxElements });
 
       // Act & Assert
       expect(env.isMaxElementsReached(count)).toBe(expected);
@@ -265,7 +265,7 @@ describe('AGTFormatterEnvironment - isMaxElementsReached', () => {
       { description: 'negative value (-1)', count: -1, expected: true },
     ])('Given $description, When checking, Then should return $expected', ({ count, expected }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment({ maxElements: 100 });
+      const env = new AGTFormatEnvironment({ maxElements: 100 });
 
       // Act & Assert
       expect(env.isMaxElementsReached(count)).toBe(expected);
@@ -295,7 +295,7 @@ describe('AGTFormatterEnvironment - isMaxElementsReached', () => {
       { description: 'negative count with maxElements 0', maxElements: 0, count: -1, expected: true },
     ])('Given $description, When checking, Then should return $expected', ({ maxElements, count, expected }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment({ maxElements });
+      const env = new AGTFormatEnvironment({ maxElements });
 
       // Act & Assert
       expect(env.isMaxElementsReached(count)).toBe(expected);
@@ -307,7 +307,7 @@ describe('AGTFormatterEnvironment - isMaxElementsReached', () => {
 // Test Target: isMaxDisplayReached
 // ============================================================================
 
-describe('AGTFormatterEnvironment - isMaxDisplayReached', () => {
+describe('AGTFormatEnvironment - isMaxDisplayReached', () => {
   // ==========================================================================
   // [正常系] Normal Cases
   // ==========================================================================
@@ -324,7 +324,7 @@ describe('AGTFormatterEnvironment - isMaxDisplayReached', () => {
       { description: 'nth exceeds maxDisplayElements (100/3)', maxDisplayElements: 3, nth: 100, expected: true },
     ])('Given $description, When checking, Then should return $expected', ({ maxDisplayElements, nth, expected }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment({ maxDisplayElements });
+      const env = new AGTFormatEnvironment({ maxDisplayElements });
 
       // Act & Assert
       expect(env.isMaxDisplayReached(nth)).toBe(expected);
@@ -343,7 +343,7 @@ describe('AGTFormatterEnvironment - isMaxDisplayReached', () => {
       { description: 'negative value (-1)', nth: -1, expected: true },
     ])('Given $description, When checking, Then should return $expected', ({ nth, expected }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment({ maxDisplayElements: 3 });
+      const env = new AGTFormatEnvironment({ maxDisplayElements: 3 });
 
       // Act & Assert
       expect(env.isMaxDisplayReached(nth)).toBe(expected);
@@ -378,7 +378,7 @@ describe('AGTFormatterEnvironment - isMaxDisplayReached', () => {
       { description: 'negative nth with maxDisplayElements 0', maxDisplayElements: 0, nth: -1, expected: true },
     ])('Given $description, When checking, Then should return $expected', ({ maxDisplayElements, nth, expected }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment({ maxDisplayElements });
+      const env = new AGTFormatEnvironment({ maxDisplayElements });
 
       // Act & Assert
       expect(env.isMaxDisplayReached(nth)).toBe(expected);
@@ -390,7 +390,7 @@ describe('AGTFormatterEnvironment - isMaxDisplayReached', () => {
 // Test Target: isMaxDepthReached
 // ============================================================================
 
-describe('AGTFormatterEnvironment - isMaxDepthReached', () => {
+describe('AGTFormatEnvironment - isMaxDepthReached', () => {
   // ==========================================================================
   // [正常系] Normal Cases
   // ==========================================================================
@@ -409,7 +409,7 @@ describe('AGTFormatterEnvironment - isMaxDepthReached', () => {
       { description: 'depth exceeds maxDepth (100/3)', maxDepth: 3, currentDepth: 100, expected: true },
     ])('Given $description, When checking, Then should return $expected', ({ maxDepth, currentDepth, expected }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment({ maxDepth });
+      const env = new AGTFormatEnvironment({ maxDepth });
 
       // Act & Assert
       expect(env.isMaxDepthReached(currentDepth)).toBe(expected);
@@ -433,7 +433,7 @@ describe('AGTFormatterEnvironment - isMaxDepthReached', () => {
       { description: 'negative value (-100)', currentDepth: -100, expected: true },
     ])('Given $description, When checking, Then should return $expected', ({ currentDepth, expected }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment({ maxDepth: 3 });
+      const env = new AGTFormatEnvironment({ maxDepth: 3 });
 
       // Act & Assert
       expect(env.isMaxDepthReached(currentDepth)).toBe(expected);
@@ -471,7 +471,7 @@ describe('AGTFormatterEnvironment - isMaxDepthReached', () => {
       { description: 'negative depth (-100) with maxDepth 0', maxDepth: 0, currentDepth: -100, expected: true },
     ])('Given $description, When checking, Then should return $expected', ({ maxDepth, currentDepth, expected }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment({ maxDepth });
+      const env = new AGTFormatEnvironment({ maxDepth });
 
       // Act & Assert
       expect(env.isMaxDepthReached(currentDepth)).toBe(expected);
@@ -483,7 +483,7 @@ describe('AGTFormatterEnvironment - isMaxDepthReached', () => {
 // Test Target: hasSeed
 // ============================================================================
 
-describe('AGTFormatterEnvironment - hasSeed', () => {
+describe('AGTFormatEnvironment - hasSeed', () => {
   // ==========================================================================
   // [正常系] Normal Cases
   // ==========================================================================
@@ -492,7 +492,7 @@ describe('AGTFormatterEnvironment - hasSeed', () => {
     // T-10-001: Object exists in seed
     it('Given object added to seed, When checking hasSeed, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = { name: 'test' };
       env.seed.add(obj);
 
@@ -503,7 +503,7 @@ describe('AGTFormatterEnvironment - hasSeed', () => {
     // T-10-002: Object does not exist in seed
     it('Given object not in seed, When checking hasSeed, Then should return false', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = { name: 'test' };
 
       // Act & Assert
@@ -513,7 +513,7 @@ describe('AGTFormatterEnvironment - hasSeed', () => {
     // T-10-002-1: Function not in seed
     it('Given function not in seed, When checking hasSeed, Then should return false', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = () => {};
 
       // Act & Assert
@@ -541,7 +541,7 @@ describe('AGTFormatterEnvironment - hasSeed', () => {
       { description: 'symbol primitive', value: Symbol('test') },
     ])('Given $description, When calling hasSeed, Then should return false (WeakSet behavior)', ({ value }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
 
       // Act & Assert
       // WeakSet.has() does not throw for non-objects, it returns false
@@ -557,7 +557,7 @@ describe('AGTFormatterEnvironment - hasSeed', () => {
     // T-10-009: Empty object
     it('Given empty object {}, When adding to seed then checking, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = {};
       env.seed.add(obj);
 
@@ -568,7 +568,7 @@ describe('AGTFormatterEnvironment - hasSeed', () => {
     // T-10-010: Multiple objects with same structure (reference equality)
     it('Given two objects with identical properties, When adding first then checking second, Then should return false (different references)', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj1 = { name: 'test', value: 123 };
       const obj2 = { name: 'test', value: 123 };
       env.seed.add(obj1);
@@ -581,7 +581,7 @@ describe('AGTFormatterEnvironment - hasSeed', () => {
     // T-10-011: Function object
     it('Given function added to seed, When checking hasSeed, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const fn = () => {};
       env.seed.add(fn);
 
@@ -595,7 +595,7 @@ describe('AGTFormatterEnvironment - hasSeed', () => {
 // Test Target: addSeed
 // ============================================================================
 
-describe('AGTFormatterEnvironment - addSeed', () => {
+describe('AGTFormatEnvironment - addSeed', () => {
   // ==========================================================================
   // [正常系] Normal Cases - addSeed returns true on success
   // ==========================================================================
@@ -604,7 +604,7 @@ describe('AGTFormatterEnvironment - addSeed', () => {
     // T-11-001: Add single object returns true
     it('Given new environment, When adding object, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = { name: 'test' };
 
       // Act
@@ -618,7 +618,7 @@ describe('AGTFormatterEnvironment - addSeed', () => {
     // T-11-002: Add multiple different objects returns true for each
     it('Given new environment, When adding multiple objects, Then each addSeed should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj1 = { name: 'first' };
       const obj2 = { name: 'second' };
       const obj3 = { name: 'third' };
@@ -635,7 +635,7 @@ describe('AGTFormatterEnvironment - addSeed', () => {
     // T-11-003: Add empty object returns true
     it('Given empty object, When adding to seed, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = {};
 
       // Act
@@ -649,7 +649,7 @@ describe('AGTFormatterEnvironment - addSeed', () => {
     // T-11-004: Add array returns true
     it('Given array object, When adding to seed, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const arr = [1, 2, 3];
 
       // Act
@@ -663,7 +663,7 @@ describe('AGTFormatterEnvironment - addSeed', () => {
     // T-11-005: Add function returns true
     it('Given function, When adding to seed, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const myFunc = () => {};
 
       // Act
@@ -695,7 +695,7 @@ describe('AGTFormatterEnvironment - addSeed', () => {
       { description: 'symbol primitive', value: Symbol('test') },
     ])('Given $description, When calling addSeed, Then should return false', ({ value }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
 
       // Act
       const result = env.addSeed(value as unknown as object);
@@ -713,7 +713,7 @@ describe('AGTFormatterEnvironment - addSeed', () => {
     // T-12-007: Adding same object multiple times returns true each time (idempotent)
     it('Given object added twice, When adding again, Then should still return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = { name: 'test' };
 
       // Act
@@ -729,7 +729,7 @@ describe('AGTFormatterEnvironment - addSeed', () => {
     // T-12-008: Add function object returns true
     it('Given function object, When adding to seed, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const fn = (): string => 'test';
 
       // Act
@@ -746,7 +746,7 @@ describe('AGTFormatterEnvironment - addSeed', () => {
 // Test Target: deleteSeed
 // ============================================================================
 
-describe('AGTFormatterEnvironment - deleteSeed', () => {
+describe('AGTFormatEnvironment - deleteSeed', () => {
   // ==========================================================================
   // [正常系] Normal Cases - deleteSeed returns true on successful deletion
   // ==========================================================================
@@ -755,7 +755,7 @@ describe('AGTFormatterEnvironment - deleteSeed', () => {
     // T-13-001: Delete existing object returns true
     it('Given object in seed, When deleting, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = { name: 'test' };
       env.addSeed(obj);
 
@@ -770,7 +770,7 @@ describe('AGTFormatterEnvironment - deleteSeed', () => {
     // T-13-002: Delete non-existing object returns false
     it('Given object not in seed, When deleting, Then should return false', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = { name: 'non-existing' };
 
       // Act
@@ -784,7 +784,7 @@ describe('AGTFormatterEnvironment - deleteSeed', () => {
     // T-13-003: Delete one of multiple objects returns true
     it('Given multiple objects in seed, When deleting one, Then should return true and only remove that object', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj1 = { name: 'first' };
       const obj2 = { name: 'second' };
       env.addSeed(obj1);
@@ -802,7 +802,7 @@ describe('AGTFormatterEnvironment - deleteSeed', () => {
     // T-13-004: Delete function object returns true
     it('Given function in seed, When deleting, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = () => {};
       env.addSeed(obj);
 
@@ -835,7 +835,7 @@ describe('AGTFormatterEnvironment - deleteSeed', () => {
       { description: 'symbol primitive', value: Symbol('test') },
     ])('Given $description, When calling deleteSeed, Then should return false', ({ value }) => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
 
       // Act
       const result = env.deleteSeed(value as unknown as object);
@@ -853,7 +853,7 @@ describe('AGTFormatterEnvironment - deleteSeed', () => {
     // T-14-007: Delete same object twice returns true then false
     it('Given object deleted once, When deleting again, Then should return false', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = { name: 'test' };
       env.addSeed(obj);
 
@@ -869,7 +869,7 @@ describe('AGTFormatterEnvironment - deleteSeed', () => {
     // T-14-008: Delete from empty seed returns false
     it('Given empty seed, When deleting object, Then should return false', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = { name: 'test' };
 
       // Act
@@ -882,7 +882,7 @@ describe('AGTFormatterEnvironment - deleteSeed', () => {
     // T-14-009: Add then delete then add again
     it('Given object added-deleted-added, When checking hasSeed, Then should return true', () => {
       // Arrange
-      const env = new AGTFormatterEnvironment();
+      const env = new AGTFormatEnvironment();
       const obj = { name: 'test' };
 
       // Act

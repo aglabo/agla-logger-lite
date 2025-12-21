@@ -514,7 +514,7 @@ describe('AGTFormatEnvironment - hasSeed', () => {
     it('Given function not in seed, When checking hasSeed, Then should return false', () => {
       // Arrange
       const env = new AGTFormatEnvironment();
-      const obj = () => {};
+      const obj = (): void => {};
 
       // Act & Assert
       expect(env.hasSeed(obj)).toBe(false);
@@ -582,7 +582,7 @@ describe('AGTFormatEnvironment - hasSeed', () => {
     it('Given function added to seed, When checking hasSeed, Then should return true', () => {
       // Arrange
       const env = new AGTFormatEnvironment();
-      const fn = () => {};
+      const fn = (): void => {};
       env.seed.add(fn);
 
       // Act & Assert
@@ -664,7 +664,7 @@ describe('AGTFormatEnvironment - addSeed', () => {
     it('Given function, When adding to seed, Then should return true', () => {
       // Arrange
       const env = new AGTFormatEnvironment();
-      const myFunc = () => {};
+      const myFunc = (): void => {};
 
       // Act
       const result = env.addSeed(myFunc);
@@ -803,7 +803,7 @@ describe('AGTFormatEnvironment - deleteSeed', () => {
     it('Given function in seed, When deleting, Then should return true', () => {
       // Arrange
       const env = new AGTFormatEnvironment();
-      const obj = () => {};
+      const obj = (): void => {};
       env.addSeed(obj);
 
       // Act

@@ -6,7 +6,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { AGTFormatterEnvironment } from '#shared/types/AGTFormatterEnvironment.class';
+import { AGTFormatterEnvironment } from '#shared/types/AGTFormatEnvironment.class';
 import { describe, expect, it } from 'vitest';
 
 const specialNumberCases = [

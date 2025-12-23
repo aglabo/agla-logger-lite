@@ -55,6 +55,7 @@
   },
   "scripts": {
     "prepare": "bash scripts/prepare.sh",
+    "build": "pnpm -r build",
     "clean": "pnpm -r exec rimraf dist module lib .cache",
     "release:changeset": "pnpm exec changeset",
     "release:version": "pnpm exec changeset version",

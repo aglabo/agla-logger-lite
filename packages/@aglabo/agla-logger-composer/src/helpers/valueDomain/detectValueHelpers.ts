@@ -87,3 +87,64 @@ export const detectValueCategory = (
   // マッピングテーブルから取得
   return category;
 };
+
+/**
+ * プリミティブ型かどうかを判定する
+ *
+ * @param value - 判定対象の値
+ * @returns プリミティブ型の場合 true、それ以外（Object等）の場合 false
+ *
+ * @remarks
+ * プリミティブ型として扱う型:
+ * - undefined
+ * - null
+ * - string
+ * - number (NaN, Infinity を含む)
+ * - boolean
+ * - symbol
+ * - bigint
+ *
+ * プリミティブでない型 (false を返す):
+ * - object (配列、Date、RegExp等を含む)
+ * - function
+ *
+ * @example
+ * ```typescript
+ * _isPrimitive(undefined)      // true
+ * _isPrimitive(null)           // true
+ * _isPrimitive('hello')        // true
+ * _isPrimitive(42)             // true
+ * _isPrimitive(true)           // true
+ * _isPrimitive(Symbol())       // true
+ * _isPrimitive(100n)           // true
+ * _isPrimitive({})             // false
+ * _isPrimitive([])             // false
+ * _isPrimitive(new Date())     // false
+ * _isPrimitive(() => {})       // false
+ * ```
+ *
+ * @internal
+ */
+export const _isPrimitive = (value: unknown): boolean => {
+  // Step 1: null/undefined はプリミティブとして扱う
+  // typeof null === 'object' のバグを回避
+  if (value === null || value === undefined) {
+    return true;
+  }
+
+  // Step 2: typeof による型判定
+  const type = typeof value;
+
+  // Step 3: プリミティブ型の判定
+  switch (type) {
+    case 'string':
+    case 'number': // NaN, Infinity も含む
+    case 'boolean':
+    case 'symbol':
+    case 'bigint':
+      return true;
+    default:
+      // object, function などはプリミティブではない
+      return false;
+  }
+};

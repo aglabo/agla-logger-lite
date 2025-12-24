@@ -7,4 +7,4 @@
 // https://opensource.org/licenses/MIT
 
 // Value classification helpers
-export { detectValueCategory, detectValueKind } from './detectValueHelpers.ts';
+export { _isPrimitive, detectValueCategory, detectValueKind } from './detectValueHelpers.ts';

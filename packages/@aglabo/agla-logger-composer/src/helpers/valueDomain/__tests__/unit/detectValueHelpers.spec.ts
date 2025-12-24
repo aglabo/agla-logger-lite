@@ -13,6 +13,7 @@ import {
   AGTValueKind,
 } from '#shared/types/AGTValueDomain.ts';
 import {
+  _isPrimitive,
   detectValueCategory,
   detectValueKind,
 } from '../../detectValueHelpers.ts';
@@ -137,6 +138,109 @@ describe('Given detectValueCategory function', () => {
     // Test: Undefined input handling
     it('Then undefined input should return undefined', () => {
       expect(detectValueCategory(undefined)).toBeUndefined();
+    });
+  });
+});
+
+// =============================================================================
+// _isPrimitive Tests
+// =============================================================================
+
+/**
+ * _isPrimitive Primitive Type Detection Tests
+ *
+ * Tests boolean-based primitive type detection that returns true for
+ * primitive types (undefined, null, string, number, boolean, symbol, bigint)
+ * and false for object types (objects, arrays, functions, etc.).
+ */
+describe('Given _isPrimitive function', () => {
+  /**
+   * Primitive Type Detection Tests
+   *
+   * Tests that all primitive types return true, including
+   * string, number, boolean, symbol, bigint, null, and undefined.
+   */
+  describe('[正常] When checking primitive types', () => {
+    // Test: String type detection
+    it('Then string values should return true', () => {
+      expect(_isPrimitive('hello')).toBe(true);
+      expect(_isPrimitive('')).toBe(true);
+    });
+
+    // Test: Number type detection
+    it('Then number values should return true', () => {
+      expect(_isPrimitive(42)).toBe(true);
+      expect(_isPrimitive(3.14)).toBe(true);
+      expect(_isPrimitive(-7)).toBe(true);
+      expect(_isPrimitive(NaN)).toBe(true);
+      expect(_isPrimitive(Infinity)).toBe(true);
+      expect(_isPrimitive(-Infinity)).toBe(true);
+    });
+
+    // Test: Boolean type detection
+    it('Then boolean values should return true', () => {
+      expect(_isPrimitive(true)).toBe(true);
+      expect(_isPrimitive(false)).toBe(true);
+    });
+
+    // Test: Symbol type detection
+    it('Then symbol values should return true', () => {
+      expect(_isPrimitive(Symbol('test'))).toBe(true);
+    });
+
+    // Test: BigInt type detection
+    it('Then bigint values should return true', () => {
+      expect(_isPrimitive(BigInt(123))).toBe(true);
+      expect(_isPrimitive(123n)).toBe(true);
+    });
+
+    // Test: Null and undefined detection
+    it('Then null and undefined should return true', () => {
+      expect(_isPrimitive(null)).toBe(true);
+      expect(_isPrimitive(undefined)).toBe(true);
+    });
+  });
+
+  /**
+   * Non-Primitive Type Detection Tests
+   *
+   * Tests that object types (objects, arrays, functions, etc.)
+   * return false, as they are not primitive types.
+   */
+  describe('[正常] When checking non-primitive types', () => {
+    // Test: Object type detection
+    it('Then object values should return false', () => {
+      expect(_isPrimitive({})).toBe(false);
+      expect(_isPrimitive({ key: 'value' })).toBe(false);
+    });
+
+    // Test: Array type detection
+    it('Then array values should return false', () => {
+      expect(_isPrimitive([])).toBe(false);
+      expect(_isPrimitive([1, 2, 3])).toBe(false);
+    });
+
+    // Test: Function type detection
+    it('Then function values should return false', () => {
+      expect(_isPrimitive(() => {})).toBe(false);
+      expect(_isPrimitive(function () {})).toBe(false);
+    });
+
+    // Test: Date type detection
+    it('Then Date objects should return false', () => {
+      expect(_isPrimitive(new Date())).toBe(false);
+    });
+
+    // Test: RegExp type detection
+    it('Then RegExp objects should return false', () => {
+      expect(_isPrimitive(/test/)).toBe(false);
+      expect(_isPrimitive(new RegExp('test'))).toBe(false);
+    });
+
+    // Test: Map and Set type detection
+    it('Then Map and Set objects should return false', () => {
+      expect(_isPrimitive(new Map())).toBe(false);
+      expect(_isPrimitive(new Set())).toBe(false);
     });
   });
 });

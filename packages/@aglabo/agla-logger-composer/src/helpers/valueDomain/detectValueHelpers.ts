@@ -6,9 +6,9 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+import type { AGTValueCategory } from '#shared/types/AGTValueDomain.ts';
 import {
   AG_KIND_TO_CATEGORY,
-  AGTValueCategory,
   AGTValueKind,
 } from '#shared/types/AGTValueDomain.ts';
 

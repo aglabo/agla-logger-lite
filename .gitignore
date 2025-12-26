@@ -38,11 +38,6 @@ $~*
 ## AI generated files
 
 ## Coding AI depended
-# deckrd (micro framework of create specs)
-!docs/.deckrd/*
-**/*session.json
-
-
 # SDD (Spec-Driven Development) files
 **/.cc-sdd/
 

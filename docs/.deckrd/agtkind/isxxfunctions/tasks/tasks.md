@@ -134,39 +134,39 @@ Status: **completed** - All 8 test cases implemented and passing
 
 #### T-02-01: Date インスタンスの検出
 
-- [ ] **T-02-01-01**: 標準 Date オブジェクトを正しく検出
+- [x] **T-02-01-01**: 標準 Date オブジェクトを正しく検出
   - Target: `_isSingleValue`
   - Scenario: Given Date オブジェクト (new Date()), When _isSingleValue を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-02-01-02**: 特定日付の Date オブジェクトを正しく検出
+- [x] **T-02-01-02**: 特定日付の Date オブジェクトを正しく検出
   - Target: `_isSingleValue`
   - Scenario: Given 特定日付の Date (new Date('2025-12-27')), When _isSingleValue を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-02-01-03**: タイムスタンプから生成した Date を正しく検出
+- [x] **T-02-01-03**: タイムスタンプから生成した Date を正しく検出
   - Target: `_isSingleValue`
   - Scenario: Given タイムスタンプからの Date (new Date(0)), When _isSingleValue を呼び出す
   - Expected: Then true を返す
 
 #### T-02-02: 非 Date 値の除外
 
-- [ ] **T-02-02-01**: Date.now() の戻り値を false として返す
+- [x] **T-02-02-01**: Date.now() の戻り値を false として返す
   - Target: `_isSingleValue`
   - Scenario: Given Date.now() の戻り値 (number), When _isSingleValue を呼び出す
   - Expected: Then false を返す (number 型であり Date ではない)
 
-- [ ] **T-02-02-02**: Date() 関数呼び出しの戻り値を false として返す
+- [x] **T-02-02-02**: Date() 関数呼び出しの戻り値を false として返す
   - Target: `_isSingleValue`
   - Scenario: Given Date() の戻り値 (string), When _isSingleValue を呼び出す
   - Expected: Then false を返す (string 型であり Date ではない)
 
-- [ ] **T-02-02-03**: オブジェクトを false として返す
+- [x] **T-02-02-03**: オブジェクトを false として返す
   - Target: `_isSingleValue`
   - Scenario: Given オブジェクト ({}), When _isSingleValue を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-02-02-04**: null/undefined を false として返す
+- [x] **T-02-02-04**: null/undefined を false として返す
   - Target: `_isSingleValue`
   - Scenario: Given null または undefined, When _isSingleValue を呼び出す
   - Expected: Then false を返す
@@ -188,76 +188,76 @@ Status: **completed** - All 8 test cases implemented and passing
 
 #### T-03-01: 配列の検出
 
-- [ ] **T-03-01-01**: 空配列を正しく検出
+- [x] **T-03-01-01**: 空配列を正しく検出
   - Target: `_isCollection`
   - Scenario: Given 空配列 ([]), When _isCollection を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-03-01-02**: 数値配列を正しく検出
+- [x] **T-03-01-02**: 数値配列を正しく検出
   - Target: `_isCollection`
   - Scenario: Given 数値配列 ([1, 2, 3]), When _isCollection を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-03-01-03**: 文字列配列を正しく検出
+- [x] **T-03-01-03**: 文字列配列を正しく検出
   - Target: `_isCollection`
   - Scenario: Given 文字列配列 (['a', 'b']), When _isCollection を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-03-01-04**: ネストされた配列を正しく検出
+- [x] **T-03-01-04**: ネストされた配列を正しく検出
   - Target: `_isCollection`
   - Scenario: Given ネストされた配列 ([{},[], null]), When _isCollection を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-03-01-05**: Array コンストラクタから生成した配列を正しく検出
+- [x] **T-03-01-05**: Array コンストラクタから生成した配列を正しく検出
   - Target: `_isCollection`
   - Scenario: Given Array コンストラクタからの配列 (new Array(5)), When _isCollection を呼び出す
   - Expected: Then true を返す
 
 #### T-03-02: Plain Object の検出
 
-- [ ] **T-03-02-01**: 空オブジェクトを正しく検出
+- [x] **T-03-02-01**: 空オブジェクトを正しく検出
   - Target: `_isCollection`
   - Scenario: Given 空オブジェクト ({}), When _isCollection を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-03-02-02**: データを持つ plain object を正しく検出
+- [x] **T-03-02-02**: データを持つ plain object を正しく検出
   - Target: `_isCollection`
   - Scenario: Given データを持つオブジェクト ({ a: 1, b: 2 }), When _isCollection を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-03-02-03**: ネストされたオブジェクトを正しく検出
+- [x] **T-03-02-03**: ネストされたオブジェクトを正しく検出
   - Target: `_isCollection`
   - Scenario: Given ネストされたオブジェクト ({ nested: { val: 1 } }), When _isCollection を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-03-02-04**: 配列を含むオブジェクトを正しく検出
+- [x] **T-03-02-04**: 配列を含むオブジェクトを正しく検出
   - Target: `_isCollection`
   - Scenario: Given 配列を含むオブジェクト ({ arr:[1, 2]}), When _isCollection を呼び出す
   - Expected: Then true を返す
 
 #### T-03-03: 非 Collection 値の除外
 
-- [ ] **T-03-03-01**: null/undefined を false として返す
+- [x] **T-03-03-01**: null/undefined を false として返す
   - Target: `_isCollection`
   - Scenario: Given null または undefined, When _isCollection を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-03-03-02**: Date オブジェクトを false として返す
+- [x] **T-03-03-02**: Date オブジェクトを false として返す
   - Target: `_isCollection`
   - Scenario: Given Date オブジェクト (new Date()), When _isCollection を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-03-03-03**: ビルトインオブジェクトを false として返す
+- [x] **T-03-03-03**: ビルトインオブジェクトを false として返す
   - Target: `_isCollection`
   - Scenario: Given ビルトインオブジェクト (RegExp, Map, Set, Error, Promise), When _isCollection を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-03-03-04**: 関数を false として返す
+- [x] **T-03-03-04**: 関数を false として返す
   - Target: `_isCollection`
   - Scenario: Given 関数 (function() {}, () => {}), When _isCollection を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-03-03-05**: クラスインスタンスを false として返す
+- [x] **T-03-03-05**: クラスインスタンスを false として返す
   - Target: `_isCollection`
   - Scenario: Given ユーザー定義クラスのインスタンス (new CustomClass()), When _isCollection を呼び出す
   - Expected: Then false を返す
@@ -266,9 +266,14 @@ Status: **completed** - All 8 test cases implemented and passing
 
 #### T-03-04: フリーズ/シール済みオブジェクトの処理
 
-- [ ] **T-03-04-01**: フリーズされた plain object を正しく検出
+- [x] **T-03-04-01**: フリーズされた plain object を正しく検出
   - Target: `_isCollection`
   - Scenario: Given フリーズされたオブジェクト (Object.freeze({ a: 1 })), When _isCollection を呼び出す
+  - Expected: Then true を返す (コンストラクタは Object のまま)
+
+- [x] **T-03-04-02**: シールされた plain object を正しく検出
+  - Target: `_isCollection`
+  - Scenario: Given シールされたオブジェクト (Object.seal({ a: 1 })), When _isCollection を呼び出す
   - Expected: Then true を返す (コンストラクタは Object のまま)
 
 ---

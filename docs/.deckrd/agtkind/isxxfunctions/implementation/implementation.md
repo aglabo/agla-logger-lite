@@ -32,45 +32,6 @@ Accordingly, the former `UserDefined` concept is **removed** and replaced with *
 
 The module provides the following functions:
 
-<<<<<<< HEAD
-- `_isAtomic`      : Detects primitive values and null / undefined
-- `_isSingleValue` : Detects single-value wrappers (Date only)
-- `_isCollection`  : Detects arrays and JSON-compatible collection structures
-- `_isDefinedData` : Detects plain data objects (`constructor === Object`)
-
-> Class instances, user-defined types, and functions are intentionally **unclassified**.
-
-### 1.3 Module Location
-
-- File: `src/helpers/value-domain/isValueFunction.ts`
-- Export: Internal (not part of public API)
-- Visibility: Used internally by `detectValueKind()` and value classification logic
-
----
-
-## 2. Type Definitions
-
-### 2.1 Input Type
-
-All classification functions accept:
-
-```ts
-export type InputValue = unknown;
-```
-
-Rationale: Functions must safely handle any JavaScript value without throwing or coercion.
-
-### 2.2 Output Type
-
-All classification functions return:
-
-```ts
-export type ClassificationResult = boolean;
-```
-
-- `true`  : Value matches the semantic category
-||||||| parent of 66d90c9 (docs(deckrd/isxxfunctions): add decision records, specs, and BDD task definitions)
-=======
 - `_isAtomic` : Detects primitive values and null / undefined
 - `_isSingleValue` : Detects single-value wrappers (Date only)
 - `_isCollection` : Detects arrays and JSON-compatible collection structures
@@ -107,7 +68,6 @@ export type ClassificationResult = boolean;
 ```
 
 - `true` : Value matches the semantic category
->>>>>>> 66d90c9 (docs(deckrd/isxxfunctions): add decision records, specs, and BDD task definitions)
 - `false` : Value does not match the category (or is intentionally unclassified)
 
 ### 2.3 Conceptual Types (Informative)

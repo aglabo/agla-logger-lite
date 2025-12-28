@@ -17,13 +17,13 @@ source: specifications.md
 
 ## Task Summary
 
-| Test Target          | Scenarios | Cases | Status  |
-| -------------------- | --------- | ----- | ------- |
-| T-01: _isAtomic      | 3         | 17    | pending |
-| T-02: _isSingleValue | 3         | 8     | pending |
-| T-03: _isCollection  | 4         | 15    | pending |
-| T-04: _isDefinedData | 3         | 10    | pending |
-| T-05: 相互排他性検証 | 1         | 8     | pending |
+| Test Target          | Scenarios | Cases | Status    |
+| -------------------- | --------- | ----- | --------- |
+| T-01: _isAtomic      | 3         | 17    | completed |
+| T-02: _isSingleValue | 3         | 8     | completed |
+| T-03: _isCollection  | 4         | 15    | completed |
+| T-04: _isDefinedData | 3         | 10    | completed |
+| T-05: 相互排他性検証 | 1         | 8     | pending   |
 
 ---
 
@@ -33,64 +33,64 @@ source: specifications.md
 
 #### T-01-01: Primitive 値の検出
 
-- [ ] **T-01-01-01**: string 型の値を正しく検出
+- [x] **T-01-01-01**: string 型の値を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given string 値 ('hello', '', template literal), When _isAtomic を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-01-01-02**: number 型の値を正しく検出
+- [x] **T-01-01-02**: number 型の値を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given number 値 (42, -3.14, 0), When _isAtomic を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-01-01-03**: boolean 型の値を正しく検出
+- [x] **T-01-01-03**: boolean 型の値を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given boolean 値 (true, false), When _isAtomic を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-01-01-04**: symbol 型の値を正しく検出
+- [x] **T-01-01-04**: symbol 型の値を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given symbol 値 (Symbol(), Symbol('name')), When _isAtomic を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-01-01-05**: bigint 型の値を正しく検出
+- [x] **T-01-01-05**: bigint 型の値を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given bigint 値 (100n, -50n, 0n), When _isAtomic を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-01-01-06**: null を正しく検出
+- [x] **T-01-01-06**: null を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given null, When _isAtomic を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-01-01-07**: undefined を正しく検出
+- [x] **T-01-01-07**: undefined を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given undefined, When _isAtomic を呼び出す
   - Expected: Then true を返す
 
 #### T-01-02: 非 Atomic 値の除外
 
-- [ ] **T-01-02-01**: オブジェクト値を false として返す
+- [x] **T-01-02-01**: オブジェクト値を false として返す
   - Target: `_isAtomic`
   - Scenario: Given オブジェクト値 ({}, { a: 1 }), When _isAtomic を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-01-02-02**: 配列値を false として返す
+- [x] **T-01-02-02**: 配列値を false として返す
   - Target: `_isAtomic`
   - Scenario: Given 配列値 ([],[1, 2, 3]), When _isAtomic を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-01-02-03**: Date オブジェクトを false として返す
+- [x] **T-01-02-03**: Date オブジェクトを false として返す
   - Target: `_isAtomic`
   - Scenario: Given Date オブジェクト (new Date()), When _isAtomic を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-01-02-04**: 関数を false として返す
+- [x] **T-01-02-04**: 関数を false として返す
   - Target: `_isAtomic`
   - Scenario: Given 関数 (function() {}, () => {}), When _isAtomic を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-01-02-05**: クラスを false として返す
+- [x] **T-01-02-05**: クラスを false として返す
   - Target: `_isAtomic`
   - Scenario: Given クラス (class Foo {}), When _isAtomic を呼び出す
   - Expected: Then false を返す
@@ -99,27 +99,27 @@ source: specifications.md
 
 #### T-01-03: 特殊な数値の処理
 
-- [ ] **T-01-03-01**: NaN を正しく検出
+- [x] **T-01-03-01**: NaN を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given NaN, When _isAtomic を呼び出す
   - Expected: Then true を返す (NaN は number 型)
 
-- [ ] **T-01-03-02**: Infinity を正しく検出
+- [x] **T-01-03-02**: Infinity を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given Infinity, When _isAtomic を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-01-03-03**: -Infinity を正しく検出
+- [x] **T-01-03-03**: -Infinity を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given -Infinity, When _isAtomic を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-01-03-04**: 負のゼロを正しく検出
+- [x] **T-01-03-04**: 負のゼロを正しく検出
   - Target: `_isAtomic`
   - Scenario: Given -0, When _isAtomic を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-01-03-05**: 空文字列を正しく検出
+- [x] **T-01-03-05**: 空文字列を正しく検出
   - Target: `_isAtomic`
   - Scenario: Given 空文字列 (''), When _isAtomic を呼び出す
   - Expected: Then true を返す (空文字列も string 型)
@@ -127,6 +127,8 @@ source: specifications.md
 ---
 
 ## T-02: _isSingleValue
+
+Status: **completed** - All 8 test cases implemented and passing
 
 ### [正常] Normal Cases
 
@@ -173,7 +175,7 @@ source: specifications.md
 
 #### T-02-03: ダックタイピングされた Date の除外
 
-- [ ] **T-02-03-01**: getTime メソッドを持つオブジェクトを false として返す
+- [x] **T-02-03-01**: getTime メソッドを持つオブジェクトを false として返す
   - Target: `_isSingleValue`
   - Scenario: Given { getTime: () => 0 } のようなダックタイプオブジェクト, When _isSingleValue を呼び出す
   - Expected: Then false を返す (instanceof Date ではない)
@@ -277,49 +279,49 @@ source: specifications.md
 
 #### T-04-01: Plain Object の検出
 
-- [ ] **T-04-01-01**: 空の plain object を正しく検出
+- [x] **T-04-01-01**: 空の plain object を正しく検出
   - Target: `_isDefinedData`
   - Scenario: Given 空オブジェクト ({}), When _isDefinedData を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-04-01-02**: データを持つ plain object を正しく検出
+- [x] **T-04-01-02**: データを持つ plain object を正しく検出
   - Target: `_isDefinedData`
   - Scenario: Given データを持つオブジェクト ({ a: 1 }), When _isDefinedData を呼び出す
   - Expected: Then true を返す
 
-- [ ] **T-04-01-03**: Object.assign で生成したオブジェクトを正しく検出
+- [x] **T-04-01-03**: Object.assign で生成したオブジェクトを正しく検出
   - Target: `_isDefinedData`
   - Scenario: Given Object.assign({}, obj), When _isDefinedData を呼び出す
   - Expected: Then true を返す
 
 #### T-04-02: 非 DefinedData 値の除外
 
-- [ ] **T-04-02-01**: 配列を false として返す
+- [x] **T-04-02-01**: 配列を false として返す
   - Target: `_isDefinedData`
   - Scenario: Given 配列 ([]), When _isDefinedData を呼び出す
   - Expected: Then false を返す (配列は Collection だが DefinedData ではない)
 
-- [ ] **T-04-02-02**: Date オブジェクトを false として返す
+- [x] **T-04-02-02**: Date オブジェクトを false として返す
   - Target: `_isDefinedData`
   - Scenario: Given Date オブジェクト, When _isDefinedData を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-04-02-03**: クラスインスタンスを false として返す
+- [x] **T-04-02-03**: クラスインスタンスを false として返す
   - Target: `_isDefinedData`
   - Scenario: Given クラスインスタンス (new CustomClass()), When _isDefinedData を呼び出す
   - Expected: Then false を返す (`constructor !== Object`)
 
-- [ ] **T-04-02-04**: 関数を false として返す
+- [x] **T-04-02-04**: 関数を false として返す
   - Target: `_isDefinedData`
   - Scenario: Given 関数, When _isDefinedData を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-04-02-05**: ビルトインオブジェクトを false として返す
+- [x] **T-04-02-05**: ビルトインオブジェクトを false として返す
   - Target: `_isDefinedData`
   - Scenario: Given ビルトインオブジェクト (Map, Set, RegExp), When _isDefinedData を呼び出す
   - Expected: Then false を返す
 
-- [ ] **T-04-02-06**: null/undefined を false として返す
+- [x] **T-04-02-06**: null/undefined を false として返す
   - Target: `_isDefinedData`
   - Scenario: Given null または undefined, When _isDefinedData を呼び出す
   - Expected: Then false を返す
@@ -328,22 +330,22 @@ source: specifications.md
 
 #### T-04-03: プロトタイプ操作されたオブジェクトの処理
 
-- [ ] **T-04-03-01**: Object.create(null) を false として返す
+- [x] **T-04-03-01**: Object.create(null) を false として返す
   - Target: `_isDefinedData`
   - Scenario: Given Object.create(null), When _isDefinedData を呼び出す
   - Expected: Then false を返す (constructor プロパティが undefined)
 
-- [ ] **T-04-03-02**: Object.create({a:1}) を false として返す
+- [x] **T-04-03-02**: Object.create({a:1}) を false として返す
   - Target: `_isDefinedData`
   - Scenario: Given Object.create({a:1}), When _isDefinedData を呼び出す
   - Expected: Then false を返す (プロトタイプチェーン, `constructor !== Object`)
 
-- [ ] **T-04-03-03**: フリーズされた plain object を正しく検出
+- [x] **T-04-03-03**: フリーズされた plain object を正しく検出
   - Target: `_isDefinedData`
   - Scenario: Given Object.freeze({}), When _isDefinedData を呼び出す
   - Expected: Then true を返す (フリーズされていても `constructor === Object`)
 
-- [ ] **T-04-03-04**: シールされた plain object を正しく検出
+- [x] **T-04-03-04**: シールされた plain object を正しく検出
   - Target: `_isDefinedData`
   - Scenario: Given Object.seal({}), When _isDefinedData を呼び出す
   - Expected: Then true を返す (シールされていても `constructor === Object`)

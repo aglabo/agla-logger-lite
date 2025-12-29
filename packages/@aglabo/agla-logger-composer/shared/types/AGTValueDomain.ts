@@ -13,7 +13,7 @@
  * - Primitive: プリミティブ値 (string, number, boolean, null, undefined, symbol, bigint)
  * - Date: Date オブジェクト
  * - Array: 配列
- * - PlainObject: プレーンオブジェクト
+ * - JSONObject: JSON型式オブジェクト
  */
 export enum AGTValueKind {
   /** プリミティブ値 */

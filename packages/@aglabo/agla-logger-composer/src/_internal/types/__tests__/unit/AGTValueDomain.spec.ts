@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-composer/src/_internal/types/__tests__/unit/AGTValueDomain.spec.ts
+// src: packages/@aglabo/agla-logger-collectionr/src/_internal/types/__tests__/unit/AGTValueDomain.spec.ts
 // @(#) Unit tests for AGTValueDomain type definitions
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -32,8 +32,8 @@ describe('AGTValueKind enum', () => {
       expect(AGTValueKind.Array).toBe('Array');
     });
 
-    it('Given AGTValueKind.PlainObject, When accessed, Then returns "PlainObject"', () => {
-      expect(AGTValueKind.PlainObject).toBe('PlainObject');
+    it('Given AGTValueKind.JSONObject, When accessed, Then returns "JSONObject"', () => {
+      expect(AGTValueKind.JSONObject).toBe('JSONObject');
     });
   });
 
@@ -59,8 +59,8 @@ describe('AGTValueCategory enum', () => {
       expect(AGTValueCategory.SingleValue).toBe('SingleValue');
     });
 
-    it('Given AGTValueCategory.Compose, When accessed, Then returns "Compose"', () => {
-      expect(AGTValueCategory.Compose).toBe('Compose');
+    it('Given AGTValueCategory.Collection, When accessed, Then returns "Collection"', () => {
+      expect(AGTValueCategory.Collection).toBe('Collection');
     });
   });
 
@@ -86,12 +86,12 @@ describe('AG_KIND_TO_CATEGORY mapping', () => {
       expect(AG_KIND_TO_CATEGORY[AGTValueKind.Date]).toBe(AGTValueCategory.SingleValue);
     });
 
-    it('Given Array kind, When mapped, Then returns Compose category', () => {
-      expect(AG_KIND_TO_CATEGORY[AGTValueKind.Array]).toBe(AGTValueCategory.Compose);
+    it('Given Array kind, When mapped, Then returns Collection category', () => {
+      expect(AG_KIND_TO_CATEGORY[AGTValueKind.Array]).toBe(AGTValueCategory.Collection);
     });
 
-    it('Given PlainObject kind, When mapped, Then returns Compose category', () => {
-      expect(AG_KIND_TO_CATEGORY[AGTValueKind.PlainObject]).toBe(AGTValueCategory.Compose);
+    it('Given JSONObject kind, When mapped, Then returns Collection category', () => {
+      expect(AG_KIND_TO_CATEGORY[AGTValueKind.JSONObject]).toBe(AGTValueCategory.Collection);
     });
   });
 

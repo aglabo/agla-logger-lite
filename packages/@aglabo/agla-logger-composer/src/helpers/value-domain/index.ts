@@ -8,3 +8,6 @@
 
 // Value classification helpers
 export { _isPrimitive, detectValueCategory, detectValueKind } from './detectValueHelpers.ts';
+
+// AGTValueCategory classification functions
+export { _isAtomic } from './isValueFunction.ts';

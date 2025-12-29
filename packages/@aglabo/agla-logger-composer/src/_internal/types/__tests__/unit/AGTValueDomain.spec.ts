@@ -64,10 +64,10 @@ describe('AGTValueCategory enum', () => {
     });
   });
 
-  describe('[正常系] enum メンバー数', () => {
-    it('Given AGTValueCategory, When counting members, Then has exactly 3 members', () => {
+  describe('[正常系] enum メンバー数 (with DefinedData)', () => {
+    it('Given AGTValueCategory, When counting members, Then has exactly 4 members', () => {
       const members = Object.keys(AGTValueCategory);
-      expect(members).toHaveLength(3);
+      expect(members).toHaveLength(4);
     });
   });
 });

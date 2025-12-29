@@ -26,7 +26,7 @@ export enum AGTValueKind {
   Array = 'Array',
 
   /** プレーンオブジェクト */
-  PlainObject = 'PlainObject',
+  JSONObject = 'JSONObject',
 }
 
 /**
@@ -35,7 +35,14 @@ export enum AGTValueKind {
  * @remarks
  * - Atomic: 分解不能なプリミティブ値
  * - SingleValue: 単一値を持つオブジェクト (Date等)
- * - Compose: 複数要素を内包する構造体 (Array, Object)
+ * - Collection: 複数要素を内包する構造体 (Array, Object)
+ * - DefinedData: ユーザー定義によるオブジェクト
+ *
+ * **Design Note: Forward Compatibility**
+ *
+ * At present, DefinedData does not provide additional semantic information beyond structural safety checks.
+ * This category exists as a forward-compatible design point, allowing future classification of user-defined data
+ * when richer runtime metadata or schemas become available.
  */
 export enum AGTValueCategory {
   /** 分解不能なプリミティブ値 */
@@ -45,7 +52,10 @@ export enum AGTValueCategory {
   SingleValue = 'SingleValue',
 
   /** 複合値 (配列・オブジェクト) */
-  Compose = 'Compose',
+  Collection = 'Collection',
+
+  /** ユーザー定義によるオブジェクト */
+  DefinedData = 'DefinedData',
 }
 
 /**
@@ -59,6 +69,6 @@ export enum AGTValueCategory {
 export const AG_KIND_TO_CATEGORY: Record<AGTValueKind, AGTValueCategory> = {
   [AGTValueKind.Primitive]: AGTValueCategory.Atomic,
   [AGTValueKind.Date]: AGTValueCategory.SingleValue,
-  [AGTValueKind.Array]: AGTValueCategory.Compose,
-  [AGTValueKind.PlainObject]: AGTValueCategory.Compose,
+  [AGTValueKind.Array]: AGTValueCategory.Collection,
+  [AGTValueKind.JSONObject]: AGTValueCategory.Collection,
 } as const;

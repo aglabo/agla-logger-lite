@@ -23,7 +23,7 @@ source: specifications.md
 | T-02: _isSingleValue | 3         | 8     | completed |
 | T-03: _isCollection  | 4         | 15    | completed |
 | T-04: _isDefinedData | 3         | 10    | completed |
-| T-05: 相互排他性検証 | 1         | 8     | pending   |
+| T-05: 相互排他性検証 | 1         | 8     | completed |
 
 ---
 
@@ -359,46 +359,48 @@ Status: **completed** - All 8 test cases implemented and passing
 
 ## T-05: 相互排他性検証
 
+Status: **completed** - All 8 test cases implemented and passing
+
 ### [正常] Mutual Exclusivity
 
 #### T-05-01: カテゴリの相互排他性保証
 
-- [ ] **T-05-01-01**: Primitive 値は Atomic のみにマッチ
+- [x] **T-05-01-01**: Primitive 値は Atomic のみにマッチ
   - Target: `_isAtomic, _isSingleValue, _isCollection, _isDefinedData`
   - Scenario: Given プリミティブ値 (string, number など), When すべての分類関数を呼び出す
   - Expected: Then _isAtomic のみが true を返し、他はすべて false を返す
 
-- [ ] **T-05-01-02**: Date は SingleValue のみにマッチ
+- [x] **T-05-01-02**: Date は SingleValue のみにマッチ
   - Target: `_isAtomic, _isSingleValue, _isCollection, _isDefinedData`
   - Scenario: Given Date オブジェクト, When すべての分類関数を呼び出す
   - Expected: Then _isSingleValue のみが true を返し、他はすべて false を返す
 
-- [ ] **T-05-01-03**: 配列は Collection のみにマッチ
+- [x] **T-05-01-03**: 配列は Collection のみにマッチ
   - Target: `_isAtomic, _isSingleValue, _isCollection, _isDefinedData`
   - Scenario: Given 配列, When すべての分類関数を呼び出す
   - Expected: Then _isCollection のみが true を返し、他はすべて false を返す
 
-- [ ] **T-05-01-04**: Plain object は Collection と DefinedData の両方にマッチ
+- [x] **T-05-01-04**: Plain object は Collection と DefinedData の両方にマッチ
   - Target: `_isAtomic, _isSingleValue, _isCollection, _isDefinedData`
   - Scenario: Given plain object ({}), When すべての分類関数を呼び出す
   - Expected: Then `_isCollection` と `_isDefinedData` が true を返し、他は false を返す
 
-- [ ] **T-05-01-05**: クラスインスタンスはどのカテゴリにもマッチしない
+- [x] **T-05-01-05**: クラスインスタンスはどのカテゴリにもマッチしない
   - Target: `_isAtomic, _isSingleValue, _isCollection, _isDefinedData`
   - Scenario: Given クラスインスタンス, When すべての分類関数を呼び出す
   - Expected: Then すべての関数が false を返す (意図的に未分類)
 
-- [ ] **T-05-01-06**: 関数はどのカテゴリにもマッチしない
+- [x] **T-05-01-06**: 関数はどのカテゴリにもマッチしない
   - Target: `_isAtomic, _isSingleValue, _isCollection, _isDefinedData`
   - Scenario: Given 関数, When すべての分類関数を呼び出す
   - Expected: Then すべての関数が false を返す (意図的に未分類)
 
-- [ ] **T-05-01-07**: ビルトインオブジェクトはどのカテゴリにもマッチしない
+- [x] **T-05-01-07**: ビルトインオブジェクトはどのカテゴリにもマッチしない
   - Target: `_isAtomic, _isSingleValue, _isCollection, _isDefinedData`
   - Scenario: Given ビルトインオブジェクト (RegExp, Map など), When すべての分類関数を呼び出す
   - Expected: Then すべての関数が false を返す (意図的に未分類)
 
-- [ ] **T-05-01-08**: null は Atomic のみにマッチ
+- [x] **T-05-01-08**: null は Atomic のみにマッチ
   - Target: `_isAtomic, _isSingleValue, _isCollection, _isDefinedData`
   - Scenario: Given null, When すべての分類関数を呼び出す
   - Expected: Then _isAtomic のみが true を返し、他はすべて false を返す

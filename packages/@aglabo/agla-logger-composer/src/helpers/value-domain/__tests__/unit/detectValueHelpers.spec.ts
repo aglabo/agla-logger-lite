@@ -223,7 +223,7 @@ describe('Given _isPrimitive function', () => {
     // Test: Function type detection
     it('Then function values should return false', () => {
       expect(_isPrimitive(() => {})).toBe(false);
-      expect(_isPrimitive(function () {})).toBe(false);
+      expect(_isPrimitive(function() {})).toBe(false);
     });
 
     // Test: Date type detection

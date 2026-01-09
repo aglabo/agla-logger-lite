@@ -64,8 +64,6 @@ tmp/
 **/temp/
 **/tmp/
 
-## beads
-.beads-hooks
 
 ##  Editor
 #   VSCode
@@ -79,3 +77,7 @@ tmp/
 
 ## Node
 node_modules/
+
+## beads
+.beads-hooks
+

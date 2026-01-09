@@ -25,10 +25,6 @@ ls:
     .ts: kebab-case | camelCase | PascalCase
     .type.ts: camelCase | PascalCase | regex:^[A-Z]{2,}[A-Za-z0-9]*$
     .class.ts: camelCase | PascalCase | regex:^[A-Z]{2,}[A-Za-z0-9]*$
-    shared:
-      .ts: kebab-case | camelCase | PascalCase
-      .type.ts: camelCase | PascalCase | regex:^[A-Z]{2,}[A-Za-z0-9]*$
-      .class.ts: camelCase | PascalCase | regex:^[A-Z]{2,}[A-Za-z0-9]*$
 
 # ignore directories
 ignore:

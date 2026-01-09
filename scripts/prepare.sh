@@ -8,10 +8,10 @@
 # https://opensource.org/licenses/MIT
 #
 
-# CI環境かどうかを判定する関数
+# Function to determine if running in CI environment
 is_ci_environment() {
-  # 一般的なCI環境変数をチェック
-  [ -n "$CI" ] ||             # 汎用CI環境変数
+  # Check common CI environment variables
+  [ -n "$CI" ] ||             # Generic CI environment variable
   [ -n "$GITHUB_ACTIONS" ] || # GitHub Actions
   [ -n "$GITLAB_CI" ] ||      # GitLab CI
   [ -n "$CIRCLECI" ] ||       # CircleCI
@@ -19,7 +19,7 @@ is_ci_environment() {
   [ -n "$TRAVIS" ]            # Travis CI
 }
 
-# メイン処理
+# Main processing
 main() {
   if is_ci_environment; then
     echo "CI environment detected. Skipping lefthook install."
@@ -32,11 +32,10 @@ main() {
   fi
 
   echo "Local development environment detected. "
-  # ローカル環境でのsetup
+  # Setup for local development environment
   lefthook install
-   # remember bd hooks must set Git config set: core.hooksPath=.beads-hooks
-  bd hooks install --chain  --shared --no-daemon
-
+  # remember bd hooks must set Git config set: core.hooksPath=.beads-hooks
+  # bd hooks install --chain  --shared --no-daemon
 }
 
 main

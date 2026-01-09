@@ -31,6 +31,12 @@ $~*
 *swp
 *lock
 
+# session files
+*session.json
+*session
+**/*session.json
+**/*session
+
 # .env files
 .env*
 .env.*
@@ -41,19 +47,25 @@ $~*
 # SDD (Spec-Driven Development) files
 **/.cc-sdd/
 
-# CLAUDE.md
+# claude code setting
 .claude/*
-!.claude/skills/
-!.claude/skills/*
+
+# agents can tracking
+!.claude/agents/
+!.claude/agents/**
 
 # MCP server dependency files
 .serena/
 .lsmcp/
 
-## Temporary Directory
+## Temporary directories are never tracked
 temp/
 tmp/
+**/temp/
+**/tmp/
 
+## beads
+.beads-hooks
 
 ##  Editor
 #   VSCode

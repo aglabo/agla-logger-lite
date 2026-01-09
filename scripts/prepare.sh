@@ -26,9 +26,17 @@ main() {
     exit 0
   fi
 
+  if lefthook check-install ; then
+    echo "lefthook is already installed."
+    exit 0
+  fi
+
   echo "Local development environment detected. "
   # ローカル環境でのsetup
   lefthook install
+   # remember bd hooks must set Git config set: core.hooksPath=.beads-hooks
+  bd hooks install --chain  --shared --no-daemon
+
 }
 
 main

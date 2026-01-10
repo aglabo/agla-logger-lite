@@ -11,7 +11,7 @@ import { describe, expect, it } from 'vitest';
 import {
   AGTValueCategory,
   AGTValueKind,
-} from '#shared/types/AGTValueDomain.ts';
+} from '#shared/types/AGTValueDomain.types.ts';
 import {
   _isPrimitive,
   detectValueCategory,

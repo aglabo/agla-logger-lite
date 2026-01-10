@@ -77,6 +77,10 @@ importers:
 
   packages/@aglabo/agla-logger-composer: {}
 
+  packages/@aglabo/agla-logger-core: {}
+
+  packages/@shared/agla-shared: {}
+
 packages:
 
   '@babel/helper-string-parser@7.27.1':

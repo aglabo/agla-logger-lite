@@ -1,4 +1,4 @@
-// src: shared/common/configs/vitest.config.functional.ts
+// src: ./configs/vitest.config.functional.ts
 // @(#) : Vitest functional test configuration for @aglabo/agla-logger-composer
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

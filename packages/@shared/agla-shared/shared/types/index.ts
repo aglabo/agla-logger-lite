@@ -6,5 +6,5 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-export * from './AGTLogLevel.types';
 export * from './AGTLoggerMessage.types';
+export * from './AGTLogLevel.types';

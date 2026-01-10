@@ -1,4 +1,4 @@
-// src: shared/common/configs/eslint.config.typed.js
+// src: ./configs/eslint.config.typed.js
 // @(#) : ESLint flat config for type check
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

@@ -1,4 +1,4 @@
-// src: shared/common/configs/tsup.config.module.ts
+// src: ./configs/tsup.config.ts
 // @(#) : tsup build configuration for @aglabo/agla-logger-core
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

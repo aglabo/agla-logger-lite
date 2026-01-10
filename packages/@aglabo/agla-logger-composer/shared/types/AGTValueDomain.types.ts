@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-composer/shared/types/AGTValueDomain.ts
+// src: packages/@aglabo/agla-logger-composer/shared/types/AGTValueDomain.types.ts
 // @(#) Value domain type definitions for value classification
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

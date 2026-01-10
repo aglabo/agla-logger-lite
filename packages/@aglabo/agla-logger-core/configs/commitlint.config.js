@@ -10,7 +10,7 @@
 // import commitlint config type
 
 // import base Config
-import { default as baseConfig } from '../base/configs/commitlint.config.base.js';
+import { default as baseConfig } from '../../../base/configs/commitlint.config.base.js';
 
 const config = {
   ...baseConfig,

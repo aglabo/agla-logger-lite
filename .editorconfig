@@ -20,6 +20,15 @@ indent_size = 2
 tab_width = 2
 
 # ─────────────────────────────
+# Programming Language
+# ─────────────────────────────
+# TypeScript
+[*.{js,jsx,ts,tsx}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+# ─────────────────────────────
 # Documents
 # ─────────────────────────────
 [*.md]

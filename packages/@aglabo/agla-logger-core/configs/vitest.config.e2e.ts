@@ -1,4 +1,4 @@
-// src: shared/common/configs/vitest.config.e2e.ts
+// src: ./configs/vitest.config.e2e.ts
 // @(#) : Vitest end-to-end test configuration for @aglabo/agla-logger-core
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

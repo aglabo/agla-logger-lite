@@ -1,4 +1,4 @@
-// src: shared/common/configs/eslint.config.js
+// src: ./configs/eslint.config.js
 // @(#) : ESLint configuration for @aglabo/agla-logger-core
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

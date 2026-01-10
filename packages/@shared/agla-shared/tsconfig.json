@@ -1,5 +1,5 @@
 // src: ./tsconfig.json
-// @(#) : TypeScript configuration for @aglabo/agla-logger-core - core logging module
+// @(#) : TypeScript configuration for @aglabo/agla-shared - shared utilities
 //
 // Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
 //

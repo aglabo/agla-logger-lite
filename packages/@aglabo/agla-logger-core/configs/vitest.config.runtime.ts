@@ -1,4 +1,4 @@
-// src: shared/common/configs/vitest.config.runtime.ts
+// src: ./configs/vitest.config.runtime.ts
 // @(#) : Vitest cross-runtime test configuration for @aglabo/agla-logger-core
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

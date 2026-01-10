@@ -1,4 +1,4 @@
-// src: shared/common/configs/vitest.config.unit.ts
+// src: ./configs/vitest.config.unit.ts
 // @(#) : Vitest unit test configuration for @aglabo/agla-logger-core
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>

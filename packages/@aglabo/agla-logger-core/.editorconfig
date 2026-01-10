@@ -1,5 +1,5 @@
-# src: shared/configs/secretlint.config.base.yaml
-# @(#) : editorconfig base configs (templates)
+# src: ./.editorconfig
+# @(#) : editorconfig settings for @aglabo/agla-logger-core
 #
 # Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
 #

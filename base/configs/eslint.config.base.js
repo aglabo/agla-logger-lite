@@ -53,6 +53,8 @@ export default [
         NodeJS: 'readonly',
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
+        URL: 'readonly',
+        URLSearchParams: 'readonly',
       },
     },
     plugins: {
@@ -72,10 +74,6 @@ export default [
     },
     settings: {
       'import/resolver': {
-        typescript: {
-          alwaysTryTypes: true,
-          project: './tsconfig.json',
-        },
         node: {
           moduleDirectory: ['node_modules', 'src/'],
           extensions: ['.js', '.jsx', '.ts', '.tsx'],

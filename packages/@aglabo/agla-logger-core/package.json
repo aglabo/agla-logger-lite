@@ -1,5 +1,5 @@
 {
-  "name": "@aglabo/agla-logger-core",
+  "name": "@aglabo/logger-lite-core",
   "_comment": "@(#) Core logging infrastructure and utilities for agla-logger-lite",
   "description": "Core logging infrastructure including base types, interfaces, constants, and utilities for the agla-logger-lite framework",
   "version": "0.1.0",

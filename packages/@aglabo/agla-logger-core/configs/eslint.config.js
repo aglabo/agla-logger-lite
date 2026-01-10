@@ -11,8 +11,8 @@ import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const __rootDir = path.resolve(__dirname, '..'); // packages/@aglabo/ag-logger
+const __configDir = dirname(fileURLToPath(import.meta.url));
+const __rootDir = path.resolve(__configDir, '..'); // packages/@aglabo/ag-logger
 
 // plugins
 // import tseslint from 'typescript-eslint';
@@ -33,8 +33,8 @@ export default [
     ],
     ignores: [
       // Runtime-specific test files use environment-specific globals
-      'src/__tests__/runtime/deno/**/*.ts',
-      'src/__tests__/runtime/bun/**/*.ts',
+      'tests/runtime/deno/**/*.ts',
+      'tests/runtime/bun/**/*.ts',
     ],
     languageOptions: {
       parserOptions: {

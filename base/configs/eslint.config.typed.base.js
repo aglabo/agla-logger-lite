@@ -29,10 +29,7 @@ import typedRules from './eslint.config.rules.typed.js';
  */
 export const createTypedConfig = (options = {}) => {
   const {
-    files = [
-      'packages/**/*.ts',
-      'aggregators/**/*.ts',
-    ],
+    files = [],
     ignores = [
       '**/dist/**',
       '**/lib/**',
@@ -71,5 +68,4 @@ export const createTypedConfig = (options = {}) => {
   ];
 };
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
 export default createTypedConfig();

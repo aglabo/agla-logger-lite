@@ -24,6 +24,12 @@ Claude Code との協働ルール。
 
 ## 技術コンテキスト
 
+### 検索ディレクトリ
+
+以下のディレクトリからもスクリプト、プロンプトを検索:
+
+- '~/.claude/plugins/marketplaces/claude-idd-framework-marketplace/plugins/claude-idd-framework'
+
 ### スタック
 
 | 項目         | 仕様                                                  |

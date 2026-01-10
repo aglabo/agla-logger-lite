@@ -7,7 +7,9 @@
 // https://opensource.org/licenses/MIT
 
 export default [
-  // for This Product
-
-  // root project
+  // shared types/constants
+  './packages/@shared/agla-share/tsconfig.json',
+  // package projects
+  './packages/@aglabo/agla-logger-core/tsconfig.json',
+  './packages/@aglabo/agla-logger-composer/tsconfig.json',
 ];

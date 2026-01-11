@@ -1,0 +1,33 @@
+# src: ./.editorconfig
+# @(#) : editorconfig settings for @aglabo/logger-utils (shared utilities repository)
+#
+# Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
+#
+# This software is released under the MIT License.
+# https://opensource.org/licenses/MIT
+
+# sub repository
+# root = true
+
+# ─────────────────────────────
+# Programming Language
+# ─────────────────────────────
+# TypeScript
+[*.{js,jsx,ts,tsx}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+# ─────────────────────────────
+# Special Files (e.g. Dockerfile, LICENSE)
+# ─────────────────────────────
+# ignore files
+[**/*ignore]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+
+# [Dockerfile]
+# indent_style = space
+# indent_size = 2

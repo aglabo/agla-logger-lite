@@ -1,0 +1,28 @@
+# src: ./.gitignore
+# @(#) : ignore rules for @aglabo/logger-utils (shared utilities repository)
+#
+# Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
+#
+# This software is released under the MIT License.
+# https://opensource.org/licenses/MIT
+
+
+
+##  Editor
+#   VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!.vscode/cspell*
+
+## Node
+node_modules/
+
+
+## output files
+dist/
+module/
+lib/

@@ -12,8 +12,7 @@
     "shared/**/*.ts",
     "tests/**/*.ts"
   ],
-  "exclude": [
-  ],
+  "exclude": [],
   "compilerOptions": {
     // directories
     "declarationDir": "./module",

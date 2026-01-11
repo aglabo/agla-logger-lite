@@ -36,3 +36,4 @@ ignore:
   - "**/.textlint"
   - "**/.cache"
   - "**/.vscode"
+  - "**/.deckrd"

@@ -11,5 +11,6 @@ export default [
   './packages/@shared/agla-shared/tsconfig.json',
   // modules
   './packages/@aglabo/agla-logger-core/tsconfig.json',
+  './packages/@aglabo/agla-logger-composer/tsconfig.json', // deprecated
   // root project (if added later)
 ];

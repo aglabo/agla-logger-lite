@@ -284,6 +284,7 @@ describe('Given: createLogMessage integration with parseLogger', () => {
       const label = 'INFO';
       const messages = ['Multi', 'language', 'test'];
       const timestamp = new Date('2025-05-20T10:30:45.000Z');
+      // cSpell:disable
       const multiLangObj = {
         cyrillic: 'Привет мир',
         arabic: 'مرحبا بالعالم',
@@ -291,17 +292,20 @@ describe('Given: createLogMessage integration with parseLogger', () => {
         hebrew: 'שלום עולם',
         thai: 'สวัสดีชาวโลก',
       };
+      // cSpell:enable
 
       // Act
       const parsed: AGTLogMessage = parseLogger(label, [...messages, multiLangObj], timestamp);
       const result = createLogMessage(parsed);
 
       // Assert
+      // cSpell:disable
       expect(result).toContain('Привет');
       expect(result).toContain('مرحبا');
       expect(result).toContain('你好');
       expect(result).toContain('שלום');
       expect(result).toContain('สวัสดี');
+      // cSpell:enable
     });
   });
 });

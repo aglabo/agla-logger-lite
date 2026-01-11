@@ -6,11 +6,11 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import type { AGTValueCategory } from '#shared/types/AGTValueDomain.ts';
+import type { AGTValueCategory } from '#shared/types/AGTValueDomain.types.ts';
 import {
   AG_KIND_TO_CATEGORY,
   AGTValueKind,
-} from '#shared/types/AGTValueDomain.ts';
+} from '#shared/types/AGTValueDomain.types.ts';
 
 /**
  * 値の種別 (AGTValueKind) を判定する

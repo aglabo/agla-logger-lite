@@ -1,4 +1,4 @@
-// src: packages/@aglabo/agla-logger-collectionr/src/_internal/types/__tests__/unit/AGTValueDomain.spec.ts
+// src: packages/@aglabo/agla-logger-composer/src/_internal/types/__tests__/unit/AGTValueDomain.spec.ts
 // @(#) Unit tests for AGTValueDomain type definitions
 //
 // Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
@@ -12,7 +12,7 @@ import {
   AG_KIND_TO_CATEGORY,
   AGTValueCategory,
   AGTValueKind,
-} from '#shared/types/AGTValueDomain.ts';
+} from '#shared/types/AGTValueDomain.types.ts';
 
 // =============================================================================
 // T-01-01: AGTValueKind enum テスト

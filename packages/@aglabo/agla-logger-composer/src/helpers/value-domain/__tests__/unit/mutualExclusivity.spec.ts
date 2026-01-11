@@ -21,7 +21,7 @@ import { _isAtomic, _isCollection, _isDefinedData, _isSingleValue } from '../../
 const assertMutualExclusivity = (
   value: unknown,
   expectedTrueFunction: string,
-) => {
+): void => {
   const results = {
     _isAtomic: _isAtomic(value),
     _isSingleValue: _isSingleValue(value),

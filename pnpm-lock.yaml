@@ -81,7 +81,7 @@ importers:
 
   packages/@aglabo/agla-logger-utils: {}
 
-  packages/@shared/agla-shared: {}
+  packages/@shared/logger-shared: {}
 
 packages:
 

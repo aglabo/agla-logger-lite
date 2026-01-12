@@ -48,7 +48,7 @@ prepare-commit-msg:
   parallel: true
   commands:
     prepare-message-script:
-      run: bash -c './scripts/prepare-commit-msg.sh --model gpt-5.2 --git-buffer'
+      run: bash -c './scripts/prepare-commit-msg.sh --model openai/gpt-5.2 --git-buffer'
 
     beads:
       run: bd hooks run prepare-commit-msg

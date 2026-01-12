@@ -10,7 +10,7 @@
 import type { Options } from 'tsup';
 
 // plugins
-export { createAliasRewritePlugin } from '../src/plugins/aliasRewrite.plugin.ts';
+export { createAliasRewritePlugin } from '../src/plugins/alias-rewrite.plugin.ts';
 
 // base configs: to be extended per package
 export const baseConfig: Options = {

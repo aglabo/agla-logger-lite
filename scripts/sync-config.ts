@@ -185,7 +185,7 @@ function normalizeScriptsObject(input: unknown): Record<string, string> {
   const scripts = (record.scripts ?? record) as unknown;
 
   if (!scripts || typeof scripts !== 'object') {
-    throw new Error("Invalid scripts json: expected { scripts: { ... } } or { ... }");
+    throw new Error('Invalid scripts json: expected { scripts: { ... } } or { ... }');
   }
 
   const scriptsRecord = scripts as Record<string, unknown>;

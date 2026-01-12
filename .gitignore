@@ -49,6 +49,7 @@ $~*
 
 # claude code setting
 .claude/*
+**/.claude/*
 
 # agents can tracking
 !.claude/agents/

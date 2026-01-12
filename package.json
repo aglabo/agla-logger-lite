@@ -75,6 +75,7 @@
     "lint:markdown": "markdownlint-cli2 --config ./configs/.markdownlint.yaml ",
     "lint:secrets": "secretlint --secretlintrc ./configs/secretlint.config.yaml --secretlintignore .gitignore --maskSecrets **/*",
     "test:all": "pnpm -r test:all",
+    "test:develop": "pnpm exec vitest run --config ./configs/vitest.config.unit.ts",
     "test:coverage:all": "pnpm -r test:coverage:all",
     "coverage:analyze": "node scripts/analyze-coverage.js",
     "coverage:report": "pnpm run test:coverage:all && pnpm run coverage:analyze",

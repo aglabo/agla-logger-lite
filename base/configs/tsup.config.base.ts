@@ -6,40 +6,11 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// libs
-import process from 'node:process';
-import { dirname } from 'path';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
 // types
-import type { Plugin as EsbuildPlugin } from 'esbuild';
 import type { Options } from 'tsup';
 
-// ✅ __dirname for ESM
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 // plugins
-/**
- * 型安全な alias → 相対パス変換 plugin
- */ export const createAliasRewritePlugin = (aliases: Record<string, string>): EsbuildPlugin => ({
-  name: 'alias-to-relative',
-  setup(build) {
-    build.onResolve({ filter: /.*/ }, (args) => {
-      for (const key in aliases) {
-        if (!args.path.startsWith(key)) { continue; }
-
-        const mapped = args.path.replace(key, aliases[key]);
-        const abs = path.resolve(mapped);
-
-        return {
-          path: abs, // return absolute path
-        };
-      }
-      return null;
-    });
-  },
-});
+export { createAliasRewritePlugin } from '../src/plugins/aliasRewrite.plugin.ts';
 
 // base configs: to be extended per package
 export const baseConfig: Options = {

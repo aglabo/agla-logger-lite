@@ -9,10 +9,10 @@
 export default [
   // shared types/constants
   './packages/@shared/logger-shared/tsconfig.json',
-  // coer modules
+  // core modules
   './packages/@aglabo/agla-logger-core/tsconfig.json',
   './packages/@aglabo/agla-logger-utils/tsconfig.json',
   // deprecated
   './packages/@aglabo/agla-logger-composer/tsconfig.json', // deprecated
-  // root project (if added later)
+  // root
 ];

@@ -20,16 +20,15 @@ thumbs.db
 #   history, cache
 .history/
 .cache/
-**/*cache
 
 
 #   backup/swap/temp
 $~*
 ~*
 *~
-*tmp
-*swp
-*lock
+*.tmp
+*.swp
+*.lock
 
 # session files
 *session.json
@@ -40,6 +39,10 @@ $~*
 # .env files
 .env*
 .env.*
+
+#
+.tools/*
+
 
 ## AI generated files
 
@@ -59,10 +62,6 @@ $~*
 .serena/
 .lsmcp/
 
-##
-#.beads/*
-!.beads/.git*
-.beads-hooks
 
 ## Temporary directories are never tracked
 temp/

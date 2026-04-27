@@ -20,6 +20,7 @@ thumbs.db
 #   history, cache
 .history/
 .cache/
+# **/*cache
 
 
 #   backup/swap/temp
@@ -40,9 +41,12 @@ $~*
 .env*
 .env.*
 
-#
-.tools/*
+## Development tools (installed locally)
+.tools/
 
+## Worktrees
+# worktree base dir
+.worktrees/
 
 ## AI generated files
 
@@ -59,6 +63,7 @@ $~*
 !.claude/skills/**
 
 # MCP server dependency files
+.cocoindex_code/
 .serena/
 .lsmcp/
 
@@ -226,3 +231,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key

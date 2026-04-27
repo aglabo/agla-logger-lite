@@ -1,4 +1,7 @@
 {
-  "database": "beads.db",
-  "jsonl_export": "issues.jsonl"
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "agla_logger_lite",
+  "project_id": "729262c9-d18d-4a73-b947-63e3c4433362"
 }

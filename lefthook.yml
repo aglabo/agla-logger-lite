@@ -23,8 +23,6 @@ pre-commit:
       skip:
         - empty
 
-
-
 prepare-commit-msg:
   parallel: true
   commands:

@@ -185,12 +185,7 @@ function normalizeScriptsObject(input: unknown): Record<string, string> {
   const scripts = (record.scripts ?? record) as unknown;
 
   if (!scripts || typeof scripts !== 'object') {
-<<<<<<< HEAD
     throw new Error('Invalid scripts json: expected { scripts: { ... } } or { ... }');
-||||||| parent of 081179f (chore(scripts): replace sync-configs with tsx script)
-=======
-    throw new Error("Invalid scripts json: expected { scripts: { ... } } or { ... }");
->>>>>>> 081179f (chore(scripts): replace sync-configs with tsx script)
   }
 
   const scriptsRecord = scripts as Record<string, unknown>;

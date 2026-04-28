@@ -25,13 +25,13 @@ status: "published"
 
 ## テスト階層 (5層)
 
-| レベル | ディレクトリ | 設定ファイル | 説明 |
-|--------|-------------|--------------|------|
-| Unit | `src/**/__tests__/unit/` | `vitest.config.unit.ts` | 関数単位 |
-| Functional | `src/__tests__/functional/` | `vitest.config.functional.ts` | 機能単位 |
-| Integration | `tests/integration/` | `vitest.config.integration.ts` | モジュール間連携 |
-| E2E | `tests/e2e/` | `vitest.config.e2e.ts` | エンドツーエンド |
-| Runtime | `tests/runtime/` | `vitest.config.runtime.ts` | ランタイム互換性 |
+| レベル      | ディレクトリ                | 設定ファイル                   | 説明             |
+| ----------- | --------------------------- | ------------------------------ | ---------------- |
+| Unit        | `src/**/__tests__/unit/`    | `vitest.config.unit.ts`        | 関数単位         |
+| Functional  | `src/__tests__/functional/` | `vitest.config.functional.ts`  | 機能単位         |
+| Integration | `tests/integration/`        | `vitest.config.integration.ts` | モジュール間連携 |
+| E2E         | `tests/e2e/`                | `vitest.config.e2e.ts`         | エンドツーエンド |
+| Runtime     | `tests/runtime/`            | `vitest.config.runtime.ts`     | ランタイム互換性 |
 
 ## BDD形式テストパターン
 

@@ -1,7 +1,7 @@
 # src: lefthook.yml
 # @(#) : lefthook config
 #
-# Copyright (c) 2025 atsushifx <http://github.com/atsushifx>
+# Copyright (c) 2025- atsushifx <http://github.com/atsushifx>
 #
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -9,8 +9,8 @@
 pre-commit:
   parallel: true
   commands:
-    gitleaks:
-      run: gitleaks protect --config ./configs/gitleaks.toml --staged
+    betterleaks:
+      run: betterleaks protect --config ./configs/betterleaks.toml --staged
 
     secretlint:
       glob: "**/*"
@@ -23,35 +23,11 @@ pre-commit:
       skip:
         - empty
 
-    beads:
-      run: bd hooks run pre-commit
-
-post-merge:
-  parallel: true
-  commands:
-    beads:
-      run: bd hooks run post-merge
-
-pre-push:
-  parallel: true
-  commands:
-    beads:
-      run: bd hooks run pre-push
-
-post-checkout:
-  parallel: true
-  commands:
-    beads:
-      run: bd hooks run post-checkout
-
 prepare-commit-msg:
   parallel: true
   commands:
     prepare-message-script:
-      run: bash -c './scripts/prepare-commit-msg.sh --model opencode/gpt-5.2 --git-buffer'
-
-    beads:
-      run: bd hooks run prepare-commit-msg
+      run: bash -c './scripts/prepare-commit-msg.sh --model opus --output "{1}"'
 
 # check commit message as Conventional Commit
 commit-msg:

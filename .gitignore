@@ -20,16 +20,16 @@ thumbs.db
 #   history, cache
 .history/
 .cache/
-**/*cache
+# **/*cache
 
 
 #   backup/swap/temp
 $~*
 ~*
 *~
-*tmp
-*swp
-*lock
+*.tmp
+*.swp
+*.lock
 
 # session files
 *session.json
@@ -40,6 +40,13 @@ $~*
 # .env files
 .env*
 .env.*
+
+## Development tools (installed locally)
+.tools/
+
+## Worktrees
+# worktree base dir
+.worktrees/
 
 ## AI generated files
 
@@ -56,13 +63,10 @@ $~*
 !.claude/skills/**
 
 # MCP server dependency files
+.cocoindex_code/
 .serena/
 .lsmcp/
 
-##
-#.beads/*
-!.beads/.git*
-.beads-hooks
 
 ## Temporary directories are never tracked
 temp/
@@ -227,3 +231,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key

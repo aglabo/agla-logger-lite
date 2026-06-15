@@ -40,7 +40,7 @@
     "@typescript-eslint/parser": "^8.52.0",
     "@vitest/coverage-v8": "^4.0.17",
     "concurrently": "^10.0.3",
-    "esbuild": "^0.27.2",
+    "esbuild": "^0.28.1",
     "eslint": "^9.39.2",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
@@ -50,7 +50,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.52.0",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.0.17"
+    "vitest": "^4.1.0"
   },
   "scripts": {
     "prepare": "bash scripts/prepare.sh",

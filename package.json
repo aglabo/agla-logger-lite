@@ -42,7 +42,7 @@
     "concurrently": "^10.0.3",
     "esbuild": "^0.27.2",
     "eslint": "^9.39.2",
-    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
     "rimraf": "^6.1.2",
     "tsup": "^8.5.1",

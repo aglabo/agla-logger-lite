@@ -1,6 +1,6 @@
 {
   "name": "@aglabo/agla-logger-lite-monorepo",
-  "_comment": "@(#) : Standardized error handling library for @aglabo ecosystem",
+  "@(#)": "Standardized error handling library for @aglabo ecosystem",
   "private": true,
   "description": "Monorepo for @aglabo packages including agla-logger-lite",
   "author": "atsushifx <https://github.com/atsushifx>",
@@ -22,8 +22,8 @@
   ],
   "packageManager": "pnpm@11.6.0",
   "engines": {
-    "node": ">=20",
-    "pnpm": ">=10"
+    "node": ">=24",
+    "pnpm": ">=11"
   },
   "workspaces": [
     "packages/*/*"
@@ -52,7 +52,7 @@
     "vitest": "^4.1.9"
   },
   "scripts": {
-    "prepare": "bash scripts/prepare.sh",
+    "prepare": "bash scripts/setup-dev-env.sh",
     "build": "pnpm -r build",
     "clean": "pnpm -r exec rimraf dist module lib .cache",
     "release:changeset": "pnpm exec changeset",
@@ -62,6 +62,7 @@
     "version-packages": "pnpm exec changeset version",
     "publish-packages": "pnpm exec changeset publish",
     "format:dprint": "dprint fmt",
+    "format:sh": "bash runners/run-shfmt.sh --format .",
     "check:dprint": "dprint check",
     "check:types": "pnpm -r check:types",
     "check:spells": "cspell  --config .vscode/cspell.json --cache --cache-location .cache/cspell/cSpellCache",
@@ -73,6 +74,12 @@
     "lint:text": "textlint --config ./configs/textlintrc.yaml --ignore-path ./configs/.textlintignore --cache --cache-location .cache/textlint-cache/textlintCache ",
     "lint:markdown": "markdownlint-cli2 --config ./configs/.markdownlint.yaml ",
     "lint:secrets": "secretlint --secretlintrc ./configs/secretlint.config.yaml --secretlintignore .gitignore --maskSecrets **/*",
+    "lint:gha": "pnpm run lint:gha:actions && pnpm run lint:gha:workflows",
+    "lint:gha:actions": "pnpm exec ghalint --config ./configs/ghalint.yaml run-action ",
+    "lint:gha:workflows": "bash ./scripts/lint-actionlint.sh && pnpm exec ghalint --config ./configs/ghalint.yaml run",
+    "lint:sh": "bash runners/run-shellcheck.sh ",
+    "test:sh": "bash runners/run-shellspec.sh ",
+    "test:sh:all": "bash runners/run-shellspec.sh all",
     "test:all": "pnpm -r test:all",
     "test:develop": "pnpm exec vitest run --config ./configs/vitest.config.unit.ts",
     "test:coverage:all": "pnpm -r test:coverage:all",

@@ -35,7 +35,7 @@ const myFunction = (param: string): string => {
 };
 
 // NG: function宣言
-function myFunction(param: string): string { /* ... */ }
+function myFunction(param: string): string {/* ... */}
 ```
 
 ### 型指定
@@ -47,14 +47,14 @@ const calculate = (value: number, multiplier: number): number => {
 };
 
 // any禁止 - unknown使用
-const process = (data: unknown): string => { /* ... */ };
+const process = (data: unknown): string => {/* ... */};
 ```
 
 ## インポートスタイル
 
 ```typescript
 // 型のみのインポートは type を使用
-import type { AGTLogLevel, AGTLoggerMessage } from './types';
+import type { AGTLoggerMessage, AGTLogLevel } from './types';
 
 // 値と型の混在
 import { createLogger } from './logger';
@@ -63,14 +63,14 @@ import type { LoggerConfig } from './types';
 
 ## 命名規則
 
-| 種類 | パターン | 例 |
-|------|----------|-----|
-| 公開関数 | camelCase | `createLogMessage` |
-| 内部関数 | `_` + camelCase | `_stringify`, `_formatError` |
+| 種類         | パターン         | 例                                |
+| ------------ | ---------------- | --------------------------------- |
+| 公開関数     | camelCase        | `createLogMessage`                |
+| 内部関数     | `_` + camelCase  | `_stringify`, `_formatError`      |
 | 型/Interface | AGT + PascalCase | `AGTLogLevel`, `AGTFormatContext` |
-| 内部型 | T + PascalCase | `TLogValue`, `TFormatterFn` |
-| 定数 | SCREAMING_SNAKE | `DEFAULT_FORMAT_OPTIONS` |
-| Namespace | PascalCase | `AgLogComposer` |
+| 内部型       | T + PascalCase   | `TLogValue`, `TFormatterFn`       |
+| 定数         | SCREAMING_SNAKE  | `DEFAULT_FORMAT_OPTIONS`          |
+| Namespace    | PascalCase       | `AgLogComposer`                   |
 
 ## フォーマット設定 (dprint)
 
@@ -84,8 +84,8 @@ import type { LoggerConfig } from './types';
     "quoteStyle": "preferSingle",
     "useBraces": "always",
     "arrowFunction.useParentheses": "force",
-    "trailingCommas": "onlyMultiLine"
-  }
+    "trailingCommas": "onlyMultiLine",
+  },
 }
 ```
 

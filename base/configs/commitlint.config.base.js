@@ -1,7 +1,7 @@
-// src: shared/configs/commitlint.config.base.ts
+// src: base/configs/commitlint.config.base.ts
 // @(#) : commitlint base configuration
 //
-// Copyright (c) 2025 atsushifx <https://github.com/atsushifx>
+// Copyright (c) 2025-atsushifx <https://github.com/atsushifx>
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
@@ -33,7 +33,7 @@ const baseConfig = {
       'deps', // (custom) Updating third-party dependencies (npm/yarn/etc.)
     ]],
     'subject-case': [2, 'never', ['start-case', 'pascal-case']], // etc
-    'header-max-length': [2, 'always', 72],
+    'header-max-length': [2, 'always', 76],
   },
 };
 

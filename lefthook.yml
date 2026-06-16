@@ -23,35 +23,11 @@ pre-commit:
       skip:
         - empty
 
-    beads:
-      run: bd hooks run pre-commit
-
-post-merge:
-  parallel: true
-  commands:
-    beads:
-      run: bd hooks run post-merge
-
-pre-push:
-  parallel: true
-  commands:
-    beads:
-      run: bd hooks run pre-push
-
-post-checkout:
-  parallel: true
-  commands:
-    beads:
-      run: bd hooks run post-checkout
-
 prepare-commit-msg:
   parallel: true
   commands:
     prepare-message-script:
-      run: bash -c './scripts/prepare-commit-msg.sh --model opencode/gpt-5.2 --git-buffer'
-
-    beads:
-      run: bd hooks run prepare-commit-msg
+      run: bash -c './scripts/prepare-commit-msg.sh --model gpt-5.4 --git-buffer'
 
 # check commit message as Conventional Commit
 commit-msg:

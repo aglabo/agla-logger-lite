@@ -4,8 +4,8 @@ packages:
   - packages/**
   - apps/**
 allowBuilds:
-  esbuild: set this to true or false
-  unrs-resolver: set this to true or false
+  esbuild: true
+  unrs-resolver: true
 minimumReleaseAgeExclude:
   - "@typescript-eslint/eslint-plugin@8.61.1"
   - "@typescript-eslint/parser@8.61.1"

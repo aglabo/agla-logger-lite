@@ -50,7 +50,7 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.1",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.9"
+    "vitest": "^5.0.0"
   },
   "scripts": {
     "prepare": "bash scripts/setup-dev-env.sh",
